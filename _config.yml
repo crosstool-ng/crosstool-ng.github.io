@@ -4,9 +4,10 @@ title: crosstool-NG
 description: [Description here. This is work-in-progress]
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://crosstool-ng.github.com" # the base hostname & protocol for your site
-#email: your-email@domain.com
-#twitter_username: jekyllrb
-#github_username:  jekyll
+github_username: crosstool-ng
+license_url: https://raw.githubusercontent.com/crosstool-ng/crosstool-ng/master/COPYING
+mailinglist_url: https://sourceware.org/ml/crossgcc/
+irc_url: irc://irc.freenode.net/#crosstool-ng
 
 # Build settings
 
@@ -17,3 +18,12 @@ markdown: redcarpet
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]
 # okay, that works nicely
+
+# use 'post' layout for posts by default (so it can be omitted in front matter)
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "post"
