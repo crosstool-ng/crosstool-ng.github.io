@@ -1,0 +1,17 @@
+# Site settings
+
+title: crosstool-NG
+description: [Description here. This is work-in-progress]
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://crosstool-ng.github.com" # the base hostname & protocol for your site
+#email: your-email@domain.com
+#twitter_username: jekyllrb
+#github_username:  jekyll
+
+# Build settings
+
+# kramdown doesn't work well with Github-flavored md, syntax HL, so let's try:
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]
+# okay, that works nicely
