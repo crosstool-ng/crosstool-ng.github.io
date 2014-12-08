@@ -10,6 +10,8 @@ url: "http://crosstool-ng.github.com" # the base hostname & protocol for your si
 
 # Build settings
 
+exclude: ["sources"]
+
 # kramdown doesn't work well with Github-flavored md, syntax HL, so let's try:
 markdown: redcarpet
 redcarpet:

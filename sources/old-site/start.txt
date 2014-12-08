@@ -1,0 +1,677 @@
+~~NOCACHE~~
+====== News ======
+
+  * 2014-12-05: Source control is moving to [[https://github.com/crosstool-ng/crosstool-ng|Github]]! This will make contributing to crosstool-NG simpler, and also now we can track [[https://github.com/crosstool-ng/crosstool-ng/issues|issues]]! Read this [[https://sourceware.org/ml/crossgcc/2014-12/msg00029.html|email]] for more info!
+  * 2014-12-02: Bryan Hundven has taken over as maintainer. Yann E. MORIN continues as a developer and stays on as an admin for site and release process.
+  * 2014-09-09: Released 1.20.0. Get it as [[/download/crosstool-ng/crosstool-ng-1.20.0.tar.bz2|bz2]] ([[/download/crosstool-ng/crosstool-ng-1.20.0.tar.bz2.sig|PGP sig]]) or [[/download/crosstool-ng/crosstool-ng-1.20.0.tar.xz|xz]] ([[/download/crosstool-ng/crosstool-ng-1.20.0.tar.xz.sig|PGP sig]]) //**Feature-release**//
+  * 2014-09-05: The server now has a new IP address, and should now be reachable again; just let the DNS caches expire, so the new address propagates. The root cause is as of yet unknown, but hopefully, this will not happen anymore. Thanks to the OSUOSL guys for their help in solving this issue! :-)
+  * 2014-08-05: It seems the crosstool-NG server is unreachable for some parts of the world. The issue is being investigated (update 2014-08-11: the configuration of the server is OK; there is a routing issue somewhere).
+  * 2014-06-27: We now have a [[http://crosstool-ng.org/git|git tree]]! The Mercurial trees are now read-only, development will be done only on the git tree.
+  * 2013-10-02: Released [[/download/crosstool-ng/crosstool-ng-1.19.0.tar.bz2|1.19.0]] ( [[/download/crosstool-ng/crosstool-ng-1.19.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.19.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.19.0|fixes]] ) //**Feature-release**//
+  * 2013-03-20: The mailing list is back to operational conditions! Thanks, and well done, [[http://sourceware.org/|sourceware.org]]! :-)
+  * 2013-03-19: [[http://sourceware.org/|sourceware.org]], which is hosting [[http://sourceware.org/ml/crossgcc/|the crossgcc mailing list]], is undergoing infrastructure overhaul, so the mailing list, and its archives, will be unreachable for a good part of the week. Sorry for the inconvenience. Stay tuned for more information.
+  * 2013-01-31: Released [[/download/crosstool-ng/crosstool-ng-1.18.0.tar.bz2|1.18.0]] ( [[/download/crosstool-ng/crosstool-ng-1.18.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.18.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.18.0|fixes]] ) //**Feature-release**//
+  * 2012-11-11: Released [[/download/crosstool-ng/crosstool-ng-1.17.0.tar.bz2|1.17.0]] ( [[/download/crosstool-ng/crosstool-ng-1.17.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.17.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.17.0|fixes]] ) //**Feature-release**//
+  * 2012-10-31: The next release was due tonight. It's gonna be late, by at least a few days... :-(
+  * 2012-08-04: Released [[/download/crosstool-ng/crosstool-ng-1.16.0.tar.bz2|1.16.0]] ( [[/download/crosstool-ng/crosstool-ng-1.16.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.16.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.16.0|fixes]] ) //**Feature-release**//
+  * 2012-08-01: The next major release was due yesterday, but it is late. A few last-minute fixes to test, and it should be ready soon (expect before the week-end).
+  * 2012-07-17: Released [[/download/crosstool-ng/crosstool-ng-1.15.3.tar.bz2|1.15.3]] ( [[/download/crosstool-ng/crosstool-ng-1.15.3.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.3.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.3|fixes]] ) //(bug-fix)//
+  * 2012-05-08: Released [[/download/crosstool-ng/crosstool-ng-1.15.2.tar.bz2|1.15.2]] ( [[/download/crosstool-ng/crosstool-ng-1.15.2.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.2.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.2|fixes]] ) //(bug-fix)//
+  * 2012-05-08: Released [[/download/crosstool-ng/crosstool-ng-1.15.1.tar.bz2|1.15.1]] ( [[/download/crosstool-ng/crosstool-ng-1.15.1.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.1.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.1|fixes]] ) //(bug-fix)// **This release is broken! Do not use it!**
+  * 2012-04-30: Released [[/download/crosstool-ng/crosstool-ng-1.15.0.tar.bz2|1.15.0]] ( [[/download/crosstool-ng/crosstool-ng-1.15.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.0|fixes]] ) //**Feature-release**//
+  * 2012-04-30: The canadian patch-queue has been upstreamed.
+  * [[old_news|Older news]]
+====== Introduction ======
+
+===== Overview =====
+
+**crosstool-NG** aims at building toolchains. Toolchains are an essential component in a software development project. It will compile, assemble and link the code that is being developed. Some pieces of the toolchain will eventually end up in the resulting binary/ies: static libraries are but an example.
+
+So, a toolchain is a very sensitive piece of software, as any bug in one of the components, or a poorly configured component, can lead to execution problems, ranging from poor performance, to applications ending unexpectedly, to mis-behaving software (which more than often is hard to detect), to hardware damage, or even to human risks (which is more than regrettable).
+
+Toolchains are made of different pieces of software, each being quite complex and requiring specially crafted options to build and work seamlessly. This is usually not that easy, even in the not-so-trivial case of native toolchains. The work reaches a higher degree of complexity when it comes to cross-compilation, where it can become quite a nightmare...
+
+Some cross-toolchains exist on the internet, and can be used for general development, but they have a number of limitations:
+  * they can be general purpose, in that they are configured for the majority: no optimisation for your specific target,
+  * they can be prepared for a specific target and thus are not easy to use, nor optimised for, or even supporting your target,
+  * they often are using aging components (compiler, C library, etc...) not supporting special features of your shiny new processor;
+On the other side, these toolchains offer some advantages:
+  * they are ready to use and quite easy to install and setup,
+  * they are proven if used by a wide community.
+
+But once you want to get all the juice out of your specific hardware, you will want to build your own toolchain. This is where **crosstool-NG** comes into play.
+
+There are also a number of tools that build toolchains for specific needs, which are not really scalable. Examples are:
+  * [[http://buildroot.uclibc.org|buildroot]] whose main purpose is to build complete root file systems, hence the name. But once you have your toolchain with buildroot, part of it is installed in the root-to-be, so if you want to build a whole new root, you either have to save the existing one as a template and restore it later, or restart again from scratch. This is not convenient,
+  * [[http://www.pengutronix.de/software/ptxdist|ptxdist]], whose purpose is very similar to buildroot,
+  * other projects ([[http://www.openembedded.org|openembedded]] for example), which is again used to build complete root file systems.
+
+**crosstool-NG** is really targetted at building toolchains, and only toolchains. It is then up to you to use it the way you want.
+
+With **crosstool-NG**, you can learn precisely how each component is configured and built, so you can finely tweak the build steps should you need it.
+
+**crosstool-NG** can build from generic, general purpose toolchains, to very specific and dedicated toolchains. Simply fill in specific values in the adequate options.
+
+Of course, it doesn't prevent you from doing your home work first. You have to know with some degree of exactitude what your target is (archictecture, processor variant), what it will be used for (embedded, desktop, realtime), what degree of confidence you have with each component (stability, maintainability), and so on...
+
+**NOTE:** **crosstool-NG** is a rewrite of the [[http://kegel.com/crosstool/|original crosstool]] by [[http://kegel.com/|Dan Kegel]]. Big thanks to him for putting his original work on-line!
+
+
+===== Features =====
+
+It's quite difficult to list all possible features available in **crosstool-NG**. Here is a list of those I find important:
+  * kernel-like **menuconfig** configuration interface
+    * widespread, well-known interface
+    * easy, yet powerful configuration
+  * growing number of supported architectures
+    * see the [[#status|status table]] for the current list
+  * support for **alternative components** in the toolchain
+    * **//uClibc-//**, **//glibc-//** or //**eglibc-**//based toolchain supported __**right now**__!
+    * others easy to implement
+  * different target OS supported
+    * **//Linux//**
+    * **//bare metal//**
+  * **patch repository** for those versions needing patching
+    * patches for many versions of the toolchain components
+    * support for custom (understand //local//) patch repository
+  * different threading models
+    * **NPTL**
+    * **linuxthreads**
+  * support for both **soft-** and **hard-float** toolchains
+  * support for **multlib** toolchains (experimental for now)
+  * debug facilities
+    * native and cross gdb, gdbserver
+    * debugging libraries: dmalloc, duma
+    * restart a build at any step
+  * **sample configurations** repository usable as starting point for your own toolchain
+    * see the [[#status|status table]] for the current list
+
+
+====== Download and usage ======
+
+You can:
+  * either get released versions and fixes there: __''[[/download/crosstool-ng/]]''__
+  * or check-out the development stuff, or browse the code on-line, from the git repos at: __''[[/git/crosstool-ng/]]''__
+
+===== Using a released version =====
+
+If you decide to use a released version (replace ''VERSION'' with the actual version you choose; the latest version is listed at the top of this page):
+
+  wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-VERSION.tar.bz2
+  tar xjf crosstool-ng-VERSION.tar.bz2
+  cd crosstool-ng-VERSION
+  ./configure --prefix=/some/place
+  make
+  make install
+  export PATH="${PATH}:/some/place/bin"
+
+Then, you are ready to use crosstool-NG.
+
+
+  * create a place to work in, then list the existing samples (pre-configured toolchains that are known to build and work) to see if one can fit your actual needs. Sample names are 4-part tuples, such as ''arm-unknown-linux-gnueabi''. In the following, we'll use that as a sample name; adapt to your needs:
+
+  mkdir /a/directory/to/build/your/toolchain
+  cd /a/directory/to/build/your/toolchain
+  ct-ng help
+  ct-ng list-samples
+  ct-ng show-arm-unknown-linux-gnueabi
+
+  * once you know what sample to use, configure ct-ng to use it:
+
+  ct-ng arm-unknown-linux-gnueabi
+
+  * samples are configured to install in ''"${HOME}/x-tools/arm-unknown-linux-gnueabi"'' by default. This should be OK for a first time user, so you can now build your toolchain:
+
+  ct-ng build
+
+  * finally, you can set access to your toolchain, and call your new cross-compiler with :
+
+  export PATH="${PATH}:${HOME}/x-tools/arm-unknown-linux-gnueabi/bin"
+  arm-unknown-linux-gnueabi-gcc
+
+Of course, replace ''arm-unknown-linux-gnueabi'' with the actual sample name you choose! ;-)
+
+If no sample really fits your needs:
+  - choose the one closest to what you want (see above), and start building it (see above, too)
+    - this ensures sure it is working for your machine, before trying to do more advanced tests
+  - fine-tune the configuration, and re-run the build, with:
+
+  ct-ng menuconfig
+  ct-ng build
+
+Then, if all goes well, your toolchain will be available and you can set access to it as shown above.
+
+See [[#contacts|contacts, below]] for how to ask for further help.
+
+__**Note 1**__: If you elect to build a uClibc-based toolchain, you will **have** to prepare a config file for uClibc.
+
+__**Note 2**__: If you call ''ct-ng -''''-help'' you will get help for ''make(2)''. This is because ''ct-ng'' is in fact a ''make(2)'' script. There is no clean workaround for this.
+
+===== Using the latest development stuff =====
+
+If you want to use the latest development stuff:
+
+  git clone git://crosstool-ng.org/crosstool-ng
+  cd crosstool-ng
+  ./bootstrap
+  ./configure --enable-local
+  make
+  ./ct-ng help
+  ./ct-ng menuconfig
+  ./ct-ng build
+
+===== Repository layout =====
+
+^ URL ^ Purpose ^
+| ''[[http://crosstool-ng.org/git]]''  | All available development repositories  |
+| ''[[http://crosstool-ng.org/git/crosstool-ng/]]''  | Main development repository  |
+
+To clone the main repository:
+
+  git clone git://crosstool-ng.org/crosstool-ng
+
+Alternatively, if you are sitting behind a restrictive proxy that does not let the git protocol through, you can clone with:
+
+  git clone http://crosstool-ng.org/git/crosstool-ng
+  
+
+=== Old repositories ===
+
+These are the old Mercurial repositories. They are now read-only: http://crosstool-ng.org/hg/
+
+===== Patchwork =====
+
+The [[http://patchwork.ozlabs.org/project/crosstool-ng/|list of pending patches]] is available on a [[http://jk.ozlabs.org/projects/patchwork/|patchwork]].
+
+
+====== Contacts ======
+
+Here are a few hints on how to ask for help:
+
+^ Problem ^ Where/whom to ask for help ^
+| -- A component (gcc, binutils, C library...) does not build.\\ -- Generated files do not work.\\ -- **crosstool-NG** breaks.\\ -- You have improvements and/or fixes for **crosstool-NG** or this WiKi page.  | Send a mail **''To:''** [[http://sourceware.org/ml/crossgcc/|the crossgcc mailing list]]\\ Alternatively, there is an [[#IRC who's who, and usual time of presence|IRC]] channel where some of us wander from time to time...\\ __**Note:**__ prefer posting on the mailing list before going to the IRC channel. Using the mailing list will allow you to ask more detailed questions than the IRC channel usually allows for.  |
+| -- You find **crosstool-NG** usefull.\\ -- You succeeded in your project partly thanks to **crosstool-NG**.  | Drop [[yann.morin.1998@free.fr|me]] a little explanation (without breaking your company's rules, if any), and I'll post your [[#Testimonials|feedback]] on this page. :-) |
+| -- You need personal assistance.\\ -- You demand that I add a feature you need.\\ -- You demand that I answer your mails instantly.  | Well, I program **crosstool-NG** on my free time, on a voluntary basis, without being paid (so far), and mostly because I needed it. It is based on code freely contributed by many people over many years. How can you demand anything? If at least you offered payement... |
+| -- You are a //nice girl from Russia// (or wherever), and you have //pictures of your big breast to show me//.  | Send mail **''To:''** /dev/null :-P |
+
+<<< round green center | Quotation lamely stolen from original ''[[http://kegel.com/crosstool/|crosstool]]'' : :::
+For questions, comments or improvements see the crossgcc mailing list, but do your homework first.\\
+As Bill Gatliff says, **"THINK!"** >>>
+
+===== IRC who's who, and usual time of presence =====
+
+The IRC support channel is ''[[irc://irc.freenode.net/#crosstool-ng|#crosstool-ng on irc.freenode.net]]''.\\
+The IRC channel is [[/download/ibot-logs|logged]] ([[/download/ibot-logs/today.html|today's log]]).
+
+|                                               ||^  Usual time-slot of presence (UTC)  ^^
+^ Nick    ^ Person        ^  Timezone             ^  Week           ^  Week-end         ^
+| y_morin | Yann E. MORIN |  UTC+0200\\ with DST  | ~16:30 - 23:00  | ~09:00 - ~16:30 (random presence)\\ ~16:30 - 23:00  |
+| bhundven | Bryan Hundven |  UTC-0800\\ with DST  | ~09:00 - 21:00  | ~09:00 - ~21:00 |
+__**Note**__: If you are a regular on the channel, just tell me if you wish to appear in the table above.
+
+
+====== Refering to crosstool-NG ======
+
+The long name of the project is **''crosstool-NG''**:
+  * no leading uppercase (except as first word in a sentence)
+  * ''crosstool'' and ''NG'' separated with a hyphen (dash)
+  * ''NG'' in uppercase
+
+Crosstool-NG can also be referred to by its short name **CT-NG**:
+  * all in uppercase
+  * ''CT'' and ''NG'' separated with a hyphen (dash)
+
+The long name is preferred over the short name, except in mail subjects, where the short name is a better fit.
+
+When referring to a specific version of crosstool-NG, append the version number either as:
+  * ''crosstool-NG X.Y.Z''
+    * the long name, a space, and the version string
+  * ''crosstool-ng-X.Y.Z''
+    * the long name in __lowercase__, a hyphen (dash), and the version string
+    * this is used to name the release tarballs
+
+The frontend to crosstool-NG is the command **''ct-ng''**:
+  * all in lowercase
+  * ''ct'' and ''ng'' separated by a hyphen (dash)
+
+
+====== Status ======
+
+Here is the list of target architectures **crosstool-NG** currently supports:
+| ^  Endianness  ^^  Bitness  ^^
+^ Architecture  ^  Big  ^  Little  ^  32  ^  64  ^
+| ''Alpha''  |  ?  |  Y  |  Y  |  ?  |
+| ''ARM''  |  Y  |  Y  |  Y  |  ?  |
+| ''AVR32'' //(EXP)//  |  Y  |  //N.A.//  |  Y  |  //N.A.//  |
+| ''Blackfin'' //(EXP)//  |  //N.A.//  |  Y  |  Y  |  //N.A.//  |
+| ''microblaze''  |  Y  |  Y  |  Y  |  //N/A//  |
+| ''MIPS''  |  Y  |  Y  |  Y  |  //EXP//  |
+| ''OpenRISC/or32''(+)  |  ?  ||  Y  |  //N.A.//  |
+| ''PowerPC''  |  Y  |  ?  |  Y  |  Y  |
+| ''s390''  |  Y  |  //N.A.//  |  Y  |  Y  |
+| ''SPARC'' //(EXP)// |  Y  |  //N.A.//  |  Y  |  Y  |
+| ''SuperH'' //(EXP)//  |  ?  ||  Y  |  ?  |
+| ''x86''  |  //N.A.//  |  Y  |  Y  |  Y  |
+//EXP//: Basic support is there, but it is considered EXPERIMENTAL.\\
+(+) OpenRISC is present as contributed code only (see ''./configure -''''-with-contrib=list'').\\
+
+Here are some of the toolchains that were successfully built with **crosstool-NG**. Of course, there are many other working combinations, but I focus on making the latest versions working.
+
+{{page>status_table}}
+
+__Note:__ The above table reflects the state of the git repository at the time it (the table) was built. And it is periodically refreshed, every hour (not for now, hand-refreshed, pending server update).\\
+__Note 2__: If you have other working combinations, please send in the config file(s), they'll get added to the samples repository in **crosstool-NG**, so that every one can benefit from it. As a bonus, the above table will be automatically updated with your name! ;-)\\
+__Note 3:__ This table is directly accessible [[status_table|here]].
+
+
+====== crosstool-NG needs your help! ======
+
+As I said above, I can't test on all platforms. Anyone volunteering to test on alternate platforms I haven't access to (or even ones I have access to) is welcome to report success/failure on those platforms. Thank you!
+
+
+====== TODO ======
+
+This is an informal, somewhat-unordered TODO list:
+  * __**add a test suite**__ for the generated toolchains
+    * test-build is here
+    * need to test generated toolchains (needs real HW or emulator)
+  * add more debug facilities
+  * canadian build
+    * re-arrange samples directory ?
+  * add other hosts, targets or systems support
+    * other hardware architectures
+    * Windows
+      * Cygwin
+        * works as host
+        * having target support is a TODO (would be nice)
+      * Mingw32
+        * totaly untested
+    * MacOS-X
+      * seems functional as host (some reports sugest it is, at least)
+      * completely unknown to me as wether it could be added as a target
+    * *BSD systems
+      * absolutely unknown to me
+    * ...
+  * create a collection of standard targets [on-going in sub-directory ''samples/'']
+  * ...
+
+
+====== Misc mumble ======
+
+===== Canadian build =====
+
+That one is tricky as well, but we should be able to overcome most of the problems lying in front of us...
+
+__**NOTE:**__ There is support for building canadian-crosses right now. It's not perfect, some cleanups have to be done, but it works quite OK.
+
+Let's take the worst case, where ''build != host != target''. So for a compiler built on ''build'', running on ''host'', generating code for ''target'':
+| ^  We need a compiler that...  || |||
+| ^   runs on...   ^   and generates\\ code for...  ^  to build...  ^  that runs\\ on...  ^  and generates\\ code for...  ^
+|  1  |  ''build''  |  ''build''  | X-binutils and X-compiler |  ''build''  |  ''host''  |
+|  1  |  ''build''  |  ''build''  | X-binutils and X-compiler |  ''build''  |  ''target''  |
+|  2  |  ''build''  |  ''host''  | C library (and helpers) |  ''host''  |  //N.A.//  |
+|  3  |  ''build''  |  ''target''  | C library (and helpers) |  ''target''  |  //N.A.//  |
+| ^  to build a toolchain that...  || |||
+| ^  runs on...  ^  generates\\ code for...  ^  to build...   ^  that runs\\ on...  ^  and generates\\ code for...  ^
+|  4  |  ''host''  |  ''target''  |  our very-own software :-D  |  ''target'' :-D  |  //N.A.//  |
+
+As you see, generating a full canadian cross-compiler is no easy task. We will assume that the native compiler on the first two lines (1) is available on your system.
+
+Then, the two cross-compilers for ''build''->''host'' (2) and ''build''->''target'' (3) are assumed to be present. They most probably will be build using **crosstool-NG**! :-P
+
+Finally, we would be able to buildthe cross-compiler we're interested in (4).
+
+Note that it would be very complex to provide options for those compilers in a single config menu (it would almost triple the menu items!). Thus, we'd need to configure them as separate compilers.
+
+Once the canadian build proper works, we could have a wrapper script take the three configurations, and build the three toolchains in turn. But that would be only for convenience, as we'd still need to provide correct configuration for every compilers.
+
+So here is a list of things to do, in order:
+  - build a cross-compiler for ''host'' to run on ''build''
+  - build a cross-compiler for ''target'' to run on ''build''
+  - build a canadian cross-compiler for ''target'' to run on ''host''
+
+
+===== Cygwin =====
+
+==== Cygwin as host ====
+
+Cygwin should be a functional host by now. There still are quirks to work around (mostly due to how Cygwin wraps the Win32 API to provide POSIX semantics), but the core of crosstool-NG is playing nicely now.
+
+One major drawback of running under Cygwin is the performance impact, notably when dealing with files, but not only:
+  * ''open(2)'', ''read(2)'', ''opendir(2)'' and ''readdir(2)'' are really slow
+  * the directory under which the build is done must be mounted with the ''-o managed'' option, or the build will fail, due to issues with case sensitivity
+  * there seem to be a limitation in file name size, that appears to be shorter than under other real POSIX systems, at least when compared to Linux
+  * ''fork(2)'' is [[http://cygwin.com/faq/faq-nochunks.html#faq.api.fork|slow as hell]]
+
+__**Note:**__ with the recently released Cygwin 1.7 series, mount no longer supports ''-o managed''. Look at the [[http://cygwin.com/faq/faq-nochunks.html#faq.using.case-sensitive|Cygwin FAQ]].
+
+==== Cygwin as target ====
+
+This will need ''[[http://sourceware.org/newlib/|newlib]]'' being supported first: Cygwin is built around ''newlib'', not ''glibc'' nor ''uClibc'', so crosstool-NG will have to be able to build ''newlib''-based toolchains prior to be able to target cygwin.
+
+===== Other systems =====
+
+==== MacOS X ====
+
+MacOS X as a build system seems to have issues with the configurator: you must pass KBUILD_NO_NLS=1 on the make command line, as to not configure the internationalisation. Thanks go to Allan Clark for the patch.
+
+Also, some of the tools there are not up-to-date with the one required by **crosstool-NG**:
+  * the ''bash'' version there (2.05b) doesn't support ''set -E''. Only starting with 3.0 does ''bash'' support ''set -E''. I have no fix yet.
+  * the ''sed'' version does not understand some flags (''-r'', for extended regular expressions, is not accepted). So the install fails.
+  * the ''date'' command does accept nanoseconds format ''%N''.
+  * seems also that ''bash'' is limited to doing 32-bit maths, when I need 64-bit maths (cause of nanoseconds).
+
+===== Exotic languages =====
+
+==== Java ====
+I have been able to build a java cross-compiler for some architectures starting with 1.0.0. Thorough testing is lacking, though. Any taker?
+
+==== Fortran ====
+Fortran is supported as of release 1.1.0. A Fortran cross-compiler was built for some architectures, but was not tested due to my ignorance of this language. Any taker?
+
+==== Objective-C ====
+No comment so far.
+
+==== Objective-C++ ====
+No comment so far.
+
+==== ADA ====
+No comment so far.
+
+==== treelang ====
+Hahaha! You must be kidding!
+
+==== Third parties ====
+There are patches floating around that add other frontends to gcc. If anyone reading this page has a need for one of those language, and succeeds in building a toolchain with **crosstool-NG**, I'd appreciate being sent a patch! :-)
+
+=== Pascal ===
+The Pascal frontend to gcc (GPC) is maintained [[http://www.gnu-pascal.de/|there]]. Unfortunately, it hasn't changed since March 2005, when it was ported to gcc-3.4.4, and there has been no other release of GPC since then.
+
+=== Mercury ===
+Mercury is a declarative logic/functional language developped at the University of Melbourne (or so I think). Latest official release is 0.13.1, dated 20061201, available for both gcc-3.4.x and gcc4.1.x. However, there are ROTD (Release Of The Day) every day since then, available againt gcc-3.4.x only. The developpers mailing list seems quite active.
+
+=== VHDL ===
+GHDL is a complete VHDL simulator, using the GCC technology, maintained [[http://ghdl.free.fr/|there]]. The latest release for GHDL is quite recent (April 2007), and is available for gcc-4.1.2 (not for more recent versions), but the SVN repository seems live. GHDL requires a native GNAT ADA compiler to be built.
+
+**Update!!** Since I wrote that page, the GHDL project has made some progress, and the latest release is dated 20100111, and is based on gcc-4.3.4
+
+=== COBOL ===
+The COBOL frontend, maintained [[http://cobolforgcc.sourceforge.net/|there]], is still quite young (started October 2007), but has had a full-time developper for the first six months of its life. The posts to the developpers ML are sparse, but they aim at a first basic subset by June 2008.
+
+=== Modula-2 ===
+As stated on their [[http://www.nongnu.org/gm2/|site]], "the intention of GNU Modula-2 is to provide a production modula-2 front end to GCC". The frontend interfaces with gcc-4.1.2 only.
+
+
+====== Snapshots ======
+
+Here are some snapshots of **crosstool-NG** in action:\\
+
+{{gallery>:snapshots}}
+
+And here is a log of a successfull run:
+  [INFO ]  Performing some trivial sanity checks
+  [INFO ]  Build started 20110808.233556
+  [INFO ]  Building environment variables
+  [EXTRA]  Preparing working directories
+  [EXTRA]  Installing user-supplied crosstool-NG configuration
+  [EXTRA]  =================================================================
+  [EXTRA]  Dumping internal crosstool-NG configuration
+  [EXTRA]    Building a toolchain for:
+  [EXTRA]      build  = x86_64-unknown-linux-gnu
+  [EXTRA]      host   = x86_64-unknown-linux-gnu
+  [EXTRA]      target = armeb-unknown-linux-uclibcgnueabi
+  [EXTRA]  Dumping internal crosstool-NG configuration: done in 0.11s (at 00:02)
+  [INFO ]  =================================================================
+  [INFO ]  Retrieving needed toolchain components' tarballs
+  [EXTRA]    Retrieving 'linux-3.0'
+  [EXTRA]    Retrieving 'gmp-5.0.1'
+  [EXTRA]    Retrieving 'mpfr-3.0.1'
+  [EXTRA]    Retrieving 'ppl-0.11.2'
+  [EXTRA]    Retrieving 'cloog-ppl-0.15.11'
+  [EXTRA]    Retrieving 'mpc-0.9'
+  [EXTRA]    Retrieving 'libelf-0.8.13'
+  [EXTRA]    Retrieving 'binutils-2.21'
+  [EXTRA]    Retrieving 'gcc-linaro-4.6-2011.07'
+  [EXTRA]    Retrieving 'uClibc-0.9.30.2'
+  [EXTRA]    Retrieving 'dmalloc-5.5.2'
+  [EXTRA]    Retrieving 'duma_2_5_15'
+  [EXTRA]    Retrieving 'gdb-7.1'
+  [EXTRA]    Retrieving 'ncurses-5.7'
+  [EXTRA]    Retrieving 'expat-2.0.1'
+  [EXTRA]    Retrieving 'ltrace_0.5.3.orig'
+  [EXTRA]    Retrieving 'strace-4.5.19'
+  [INFO ]  Retrieving needed toolchain components' tarballs: done in 557.99s (at 09:20)
+  [INFO ]  =================================================================
+  [INFO ]  Extracting and patching toolchain components
+  [EXTRA]    Extracting 'linux-3.0'
+  [EXTRA]    Patching 'linux-3.0'
+  [EXTRA]    Extracting 'gmp-5.0.1'                                                                                             
+  [EXTRA]    Patching 'gmp-5.0.1'                                                                                               
+  [EXTRA]    Extracting 'mpfr-3.0.1'                                                                                            
+  [EXTRA]    Patching 'mpfr-3.0.1'                                                                                              
+  [EXTRA]    Extracting 'ppl-0.11.2'                                                                                            
+  [EXTRA]    Patching 'ppl-0.11.2'                                                                                              
+  [EXTRA]    Extracting 'cloog-ppl-0.15.11'
+  [EXTRA]    Patching 'cloog-ppl-0.15.11'
+  [EXTRA]    Extracting 'mpc-0.9'
+  [EXTRA]    Patching 'mpc-0.9'
+  [EXTRA]    Extracting 'libelf-0.8.13'
+  [EXTRA]    Patching 'libelf-0.8.13'
+  [EXTRA]    Extracting 'binutils-2.21'
+  [EXTRA]    Patching 'binutils-2.21'
+  [EXTRA]    Extracting 'gcc-linaro-4.6-2011.07'
+  [EXTRA]    Patching 'gcc-linaro-4.6-2011.07'
+  [EXTRA]    Extracting 'uClibc-0.9.30.2'
+  [EXTRA]    Patching 'uClibc-0.9.30.2'
+  [EXTRA]    Extracting 'dmalloc-5.5.2'
+  [EXTRA]    Patching 'dmalloc-5.5.2'
+  [EXTRA]    Extracting 'duma_2_5_15'
+  [EXTRA]    Patching 'duma-2_5_15'
+  [EXTRA]    Extracting 'gdb-7.1'
+  [EXTRA]    Patching 'gdb-7.1'
+  [EXTRA]    Extracting 'ncurses-5.7'
+  [EXTRA]    Patching 'ncurses-5.7'
+  [EXTRA]    Extracting 'expat-2.0.1'
+  [EXTRA]    Patching 'expat-2.0.1'
+  [EXTRA]    Extracting 'ltrace-0.5.3'
+  [EXTRA]    Patching 'ltrace-0.5.3'
+  [EXTRA]    Extracting 'strace-4.5.19'
+  [EXTRA]    Patching 'strace-4.5.19'
+  [INFO ]  Extracting and patching toolchain components: done in 50.04s (at 10:10)
+  [INFO ]  =================================================================
+  [INFO ]  Checking C library configuration
+  [EXTRA]    Munging uClibc configuration
+  [INFO ]  Checking C library configuration: done in 1.17s (at 10:11)
+  [INFO ]  =================================================================
+  [INFO ]  Installing GMP
+  [EXTRA]    Configuring GMP
+  [EXTRA]    Building GMP
+  [EXTRA]    Installing GMP
+  [INFO ]  Installing GMP: done in 29.16s (at 10:40)
+  [INFO ]  =================================================================
+  [INFO ]  Installing MPFR
+  [EXTRA]    Configuring MPFR
+  [EXTRA]    Building MPFR
+  [EXTRA]    Installing MPFR
+  [INFO ]  Installing MPFR: done in 11.41s (at 10:51)
+  [INFO ]  =================================================================
+  [INFO ]  Installing PPL
+  [EXTRA]    Configuring PPL
+  [EXTRA]    Building PPL
+  [EXTRA]    Installing PPL
+  [INFO ]  Installing PPL: done in 90.91s (at 12:22)
+  [INFO ]  =================================================================
+  [INFO ]  Installing CLooG/ppl
+  [EXTRA]    Configuring CLooG/ppl
+  [EXTRA]    Building CLooG/ppl
+  [EXTRA]    Installing CLooG/ppl
+  [INFO ]  Installing CLooG/ppl: done in 6.28s (at 12:29)
+  [INFO ]  =================================================================
+  [INFO ]  Installing MPC
+  [EXTRA]    Configuring MPC
+  [EXTRA]    Building MPC
+  [EXTRA]    Installing MPC
+  [INFO ]  Installing MPC: done in 6.48s (at 12:35)
+  [INFO ]  =================================================================
+  [INFO ]  Installing binutils
+  [EXTRA]    Configuring binutils
+  [EXTRA]    Building binutils
+  [EXTRA]    Installing binutils
+  [INFO ]  Installing binutils: done in 29.90s (at 13:05)
+  [INFO ]  =================================================================
+  [INFO ]  Installing kernel headers
+  [EXTRA]    Installing kernel headers
+  [EXTRA]    Checking installed headers
+  [INFO ]  Installing kernel headers: done in 8.94s (at 13:14)
+  [INFO ]  =================================================================
+  [INFO ]  Installing C library headers
+  [EXTRA]    Copying sources to build dir
+  [EXTRA]    Applying configuration
+  [EXTRA]    Building headers
+  [EXTRA]    Installing headers
+  [INFO ]  Installing C library headers: done in 11.10s (at 13:25)
+  [INFO ]  =================================================================
+  [INFO ]  Installing static core C compiler
+  [EXTRA]    Configuring static core C compiler
+  [EXTRA]    Building static core C compiler
+  [EXTRA]    Installing static core C compiler
+  [INFO ]  Installing static core C compiler: done in 134.17s (at 15:39)
+  [INFO ]  =================================================================
+  [INFO ]  Installing C library
+  [EXTRA]    Copying sources to build dir
+  [EXTRA]    Applying configuration
+  [EXTRA]    Building C library
+  [EXTRA]    Installing C library
+  [INFO ]  Installing C library: done in 15.73s (at 15:55)
+  [INFO ]  =================================================================
+  [INFO ]  Installing final compiler
+  [EXTRA]    Configuring final compiler
+  [EXTRA]    Building final compiler
+  [EXTRA]    Installing final compiler
+  [INFO ]  Installing final compiler: done in 141.78s (at 18:17)
+  [INFO ]  =================================================================
+  [INFO ]  Installing libelf for the target
+  [EXTRA]    Configuring libelf
+  [EXTRA]    Building libelf
+  [EXTRA]    Installing libelf
+  [INFO ]  Installing libelf for the target: done in 6.66s (at 18:24)
+  [INFO ]  =================================================================
+  [INFO ]  Installing binutils for target
+  [EXTRA]    Configuring binutils for target
+  [EXTRA]    Building binutils' libraries (libiberty bfd) for target
+  [EXTRA]    Installing binutils' libraries (libiberty bfd) for target
+  [INFO ]  Installing binutils for target: done in 43.88s (at 19:07)
+  [INFO ]  =================================================================
+  [INFO ]  Installing dmalloc
+  [EXTRA]    Configuring dmalloc
+  [EXTRA]    Building dmalloc
+  [EXTRA]    Installing dmalloc
+  [INFO ]  Installing dmalloc: done in 9.83s (at 19:17)
+  [INFO ]  =================================================================
+  [INFO ]  Installing D.U.M.A.
+  [EXTRA]    Copying sources
+  [EXTRA]    Building libraries 'libduma.a libduma.so.0.0.0'
+  [EXTRA]    Installing libraries 'libduma.a libduma.so.0.0.0'
+  [EXTRA]    Installing shared library link
+  [EXTRA]    Installing wrapper script
+  [INFO ]  Installing D.U.M.A.: done in 1.94s (at 19:19)
+  [INFO ]  =================================================================
+  [INFO ]  Installing cross-gdb
+  [EXTRA]    Configuring cross-gdb
+  [EXTRA]    Building cross-gdb
+  [EXTRA]    Installing cross-gdb
+  [EXTRA]    Install '.gdbinit' template
+  [INFO ]  Installing cross-gdb: done in 61.43s (at 20:21)
+  [INFO ]  =================================================================
+  [INFO ]  Installing native gdb
+  [EXTRA]    Building static target ncurses
+  [EXTRA]    Building static target expat
+  [EXTRA]    Configuring native gdb
+  [EXTRA]    Building native gdb
+  [EXTRA]    Installing native gdb
+  [EXTRA]    Cleaning up ncurses
+  [INFO ]  Installing native gdb: done in 133.22s (at 22:34)
+  [INFO ]  =================================================================
+  [INFO ]  Installing gdbserver
+  [EXTRA]    Configuring gdbserver
+  [EXTRA]    Building gdbserver
+  [EXTRA]    Installing gdbserver
+  [INFO ]  Installing gdbserver: done in 6.22s (at 22:40)
+  [INFO ]  =================================================================
+  [INFO ]  Installing ltrace
+  [EXTRA]    Copying sources to build dir
+  [EXTRA]    Configuring ltrace
+  [EXTRA]    Building ltrace
+  [EXTRA]    Installing ltrace
+  [INFO ]  Installing ltrace: done in 4.17s (at 22:44)
+  [INFO ]  =================================================================
+  [INFO ]  Installing strace
+  [EXTRA]    Configuring strace
+  [EXTRA]    Building strace
+  [EXTRA]    Installing strace
+  [INFO ]  Installing strace: done in 17.68s (at 23:02)
+  [INFO ]  =================================================================
+  [INFO ]  Cleaning-up the toolchain's directory
+  [INFO ]    Stripping all toolchain executables
+  [EXTRA]    Installing the populate helper
+  [EXTRA]    Installing a cross-ldd helper
+  [EXTRA]    Creating toolchain aliases
+  [EXTRA]    Removing access to the build system tools
+  [EXTRA]    Removing installed documentation
+  [INFO ]  Cleaning-up the toolchain's directory: done in 2.25s (at 23:04)
+  [INFO ]  Build completed at 20110808.235900
+  [INFO ]  (elapsed: 23:04.20)
+  [INFO ]  Finishing installation (may take a few seconds)...
+====== Testimonials ======
+
+Note: typoes are the original author's. ;-)
+
+  * On 20080826.0106+0200, Chris Hinshaw writes:
+
+  Thank you for making a non-trivial task simple. CT-NG is an excellent tool
+  and extremely easy to use. I have been using it to create toolchains for the
+  405 and it is an unbelievable time saver. Very well designed and implemented.
+  
+  Thank you,
+  Chris Hinshaw
+
+  * On 20080915.1614+0200, Peter Wippich writes:
+
+  First of all thanks for the nice work. I successfully build a arm9tdmi
+  toolchain (after some minor problems) with gcc4.2.2 / glibc2.6.
+
+  * On 20081023.2243+0200, Nye Liu writes:
+
+  Thanks for your reponse. Let me just say... i am VERY happy with crosstool-ng
+  so far, thank you so much the time and effort you spent on it, it is simply
+  awesome.
+
+  * On 20081123.2019+0100, Дмитрий Барский writes:
+
+  We are successfully using your crosstol-ng for creating small embedded
+  gnu/linux distribution, that we use in ticket selling terminal, slot
+  machines, online pay terminals and probably will use somewhere else. We've
+  tried a lot of similar tools, but only this one has clear and user friendly
+  documentation, and is very easy in use.
+
+  * On 20090131.1807+0100, Vincent Sanders wrote:
+
+  Firstly I would like to say thanks for your excellent tool, saves me a
+  *lot* of time and effort. We use it to generate the cross compielrs
+  for the ARM linux Linux Kernel autobuilder: http://armlinux.simtec.co.uk/kautobuild/
+
+  * On 20090223.1545+0100, Kim B. Heino wrote:
+
+  Our company has been using crosstool-NG for some time now. Thanks for
+  great toolchain builder! Before crosstool-NG we used our own builder.
+
+  * On 20090710.2240+0200, Johns Daniel wrote:
+
+  Thank you very much for crosstool-ng! Certainly, a very useful tool
+  for building cross-compilers.
+
+  * On 20130116.0940+0100, Jérôme BARDON wrote:
+
+  We have been using crosstool-NG consistently in our company over 2 years
+  to produce cross-toolchains for x86_64 targets. These toolchains have
+  compiled milions of lines of code so far without any problem.
