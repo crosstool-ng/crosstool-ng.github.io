@@ -3,5 +3,7 @@
 This is work-in-progress. Current status:
 
 - [x] initialize Jekyll site
-- [ ] get a Bootstrap layout going (with header to static pages etc)
-- [ ] migrate content
+- [x] old plaintxt/asciidoc documentation converted to markdown and integrated into Jekyll
+- ~~[ ] get a Bootstrap layout going (with header to static pages etc)~~
+- [ ] migrate content from old site
+- [ ] make layout prettier
