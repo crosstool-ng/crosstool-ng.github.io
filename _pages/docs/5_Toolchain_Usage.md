@@ -50,7 +50,7 @@ location into which we place only the files we want to have on our target.
 
 There are four schools of thought here:
 
-i)  Install directly into the sysroot of the toolchain.
+ -  **Option i)**: Install directly into the sysroot of the toolchain.
 
     By default (i.e., if you don’t pass any arguments to the tools which
     would change this behaviour) the toolchain that is built by
@@ -76,11 +76,11 @@ i)  Install directly into the sysroot of the toolchain.
         $ make
         $ make DESTDIR=/<ct-ng install path>/<host tuple>/sysroot install
 
-ii) Copy the toolchain’s sysroot to the `staging` area.
+ -  **Option ii)**: Copy the toolchain’s sysroot to the `staging` area.
 
     If you start off by copying the toolchain’s sysroot directory to
     your staging area, you can simply proceed to install all your
-    packages' artifacts to the same staging area. You then only need to
+    packages’ artifacts to the same staging area. You then only need to
     specify a `--sysroot=<staging area>` option to the compiler of any
     subsequent builds and all your required header and library files
     will be found/used.
@@ -109,14 +109,14 @@ ii) Copy the toolchain’s sysroot to the `staging` area.
         $ make
         $ make DESTDIR=/path/to/staging install
 
-iii) Use separate staging and sysroot directories.
+ -  **Option iii)**: Use separate staging and sysroot directories.
 
-        In this scenario you use a staging area to install programs, but you do
-        not pre-fill that staging area with the toolchain's sysroot. In this case
-        the compiler will find the system includes and libraries in its sysroot
-        area but you have to pass appropriate `CPPFLAGS` and `LDFLAGS` to tell it
-        where to find your headers and libraries from your staging area (or use
-        a wrapper).
+    In this scenario you use a staging area to install programs, but you do
+    not pre-fill that staging area with the toolchain’s sysroot. In this case
+    the compiler will find the system includes and libraries in its sysroot
+    area but you have to pass appropriate `CPPFLAGS` and `LDFLAGS` to tell it
+    where to find your headers and libraries from your staging area (or use
+    a wrapper).
 
         $ ./configure --build=<build tuple> --host=<host tuple>          \
                       --prefix=/usr --enable-foo-bar...                  \
@@ -125,7 +125,7 @@ iii) Use separate staging and sysroot directories.
         $ make
         $ make DESTDIR=/path/to/staging install
 
-iv) A mix of ii) and iii), using carefully crafted union mounts.
+ -  **Option iv)**: A mix of ii) and iii), using carefully crafted union mounts.
 
     The staging area is a union mount of:
 
@@ -145,11 +145,11 @@ iv) A mix of ii) and iii), using carefully crafted union mounts.
             $ (good luck!)
 
 It is strongly advised not to use the toolchain sysroot directory as an
-install directory (i.e., option 1) for your programs/packages. If you do
+install directory (i.e., option i)) for your programs/packages. If you do
 so, you will not be able to use your toolchain for another project. It
 is even strongly advised that your toolchain is chmod-ed to read-only
 once successfully install, so that you don’t go polluting your toolchain
-with your programs'/packages' files. This can be achieved by selecting
+with your programs’/packages’ files. This can be achieved by selecting
 the "Render the toolchain read-only" from crosstool-NG’s "Paths and misc
 options" configuration page.
 
@@ -213,46 +213,30 @@ See `your-target-tuple-populate -h` for more information on the options.
 
 Here is how populate works:
 
-1.  perform some sanity checks:
+1.  Perform some sanity checks:
+    -   `src_dir` and `dst_dir` are specified,
+    -   `src_dir` exists,
+    -   unless forced, `dst_dir` does not exist,
+    -   `src_dir` != `dst_dir`.
 
-    -   `src_dir` and `dst_dir` are specified
+2.  Copy `src_dir` to `dst_dir`.
 
-    -   `src_dir` exists
-
-    -   unless forced, `dst_dir` does not exist
-
-    -   `src_dir` != `dst_dir`
-
-2.  copy `src_dir` to `dst_dir`
-
-3.  add forced libraries to `dst_dir`
-
-    -   build the list from `-l` and `-L` options
-
+3.  Add forced libraries to `dst_dir`:
+    -   build the list from `-l` and `-L` options,
     -   get forced libraries from the sysroot (see below for heuristics)
+        -   abort on the first missing library, unless `-f` is specified.
 
-        -   abort on the first missing library, unless `-f` is specified
-
-4.  add all missing libraries to `dst_dir`
-
+4.  Add all missing libraries to `dst_dir`:
     -   scan `dst_dir` for every ELF files that are *executable* or
         *shared object*
-
     -   list the "NEEDED Shared library" fields
-
         -   check if the library is already in `dst_dir/lib` or
             `dst_dir/usr/lib`
-
         -   if not, get the library from the sysroot
-
             -   if it’s in `sysroot/lib`, copy it to `dst_dir/lib`
-
             -   if it’s in `sysroot/usr/lib`, copy it to
                 `dst_dir/usr/lib`
-
             -   in both cases, use the `SONAME` of the library to create
                 the file in `dst_dir`
-
             -   if it was not found in the sysroot, this is an error.
-
 

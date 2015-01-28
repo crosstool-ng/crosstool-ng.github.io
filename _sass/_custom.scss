@@ -1,3 +1,4 @@
+// intro box on home page
 #intro {
     background-color: #eee;
     border-radius: 6px;
@@ -17,6 +18,8 @@ footer a {
     font-weight: 400;
 }
 
+// stuff for 'docs' layout
+
 .docs .back-to-contents {
     color: $grey-color !important;
 }
@@ -24,3 +27,23 @@ footer a {
 .docs .post-title {
     margin: 20px 0 0;
 }
+
+// these list rules were introduced to make 5_Toolchain_Usage look okay
+li {
+    padding-left: 10px;
+}
+
+li > ol, li > ul {
+    margin-bottom: 15px;
+}
+
+// used as a footnote divider in 6_Toolchain_Types
+hr {
+    margin: 20px 0 10px;
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+}
+
+

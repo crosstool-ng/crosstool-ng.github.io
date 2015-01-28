@@ -16,8 +16,7 @@ see [Install method](#install-method), while the latter is most useful for
 developers that use a clone of the repository, and want to submit patches,
 see [“The Hacker’s way”](#hackers-way).
 
-<a name="install-method"></a>
-Install method
+Install method <a name="install-method"></a>
 --------------
 
 If you go for the install, then you just follow the classical, but yet easy
@@ -37,8 +36,7 @@ as a working place, `cd` in there and run:
 
 See below for complete usage.
 
-<a name="hackers-way"></a>
-The Hacker’s way
+The Hacker’s way <a name="hackers-way"></a>
 ----------------
 
 If you go the hacker’s way, then the usage is a bit different, although very
@@ -60,10 +58,10 @@ crosstool-NG! Stay in the directory holding the sources, and run:
 See below for complete usage.
 
 Now, provided you used a clone of the repository, you can send me your
-changes. See the section [Contributing](#contrib) for how to submit changes.
+changes. See the section [Contributing](/docs/contribute/) for how to submit
+changes.
 
-<a name="package-prep">
-Preparing for packaging
+Preparing for packaging <a name="package-prep"></a>
 -----------------------
 
 If you plan on packaging crosstool-NG, you surely don’t want to install it
@@ -74,8 +72,7 @@ in your root file system. The install procedure of crosstool-NG honors the
     make
     make DESTDIR=/packaging/place install
 
-<a name="shell-completion"></a>
-Shell completion
+Shell completion <a name="shell-completion"></a>
 ----------------
 
 crosstool-NG comes with a shell script fragment that defines bash-compatible
@@ -90,8 +87,7 @@ To install the shell script fragment, you have two options:
 -   install for a single user, by copying `ct-ng.comp` into `${HOME}/`
     and sourcing this file from your `${HOME}/.bashrc`.
 
-<a name="contributed-code"></a>
-Contributed code
+Contributed code <a name="contributed-code"></a>
 ----------------
 
 Some people contributed code that couldn’t get merged for various reasons.

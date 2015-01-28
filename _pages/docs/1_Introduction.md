@@ -4,7 +4,7 @@ title: Introduction
 permalink: /docs/introduction/
 ---
 
-crosstool-NG aims at building toolchains. Toolchains are an essential
+**crosstool-NG** aims at building toolchains. Toolchains are an essential
 component in a software development project. It will compile, assemble and
 link the code that is being developed. Some pieces of the toolchain will
 eventually end up in the resulting binaries: static libraries are but an
@@ -41,7 +41,7 @@ On the other side, these toolchain offer some advantages:
 -   They are proven if used by a wide community.
 
 But once you want to get all the juice out of your specific hardware, you will
-want to build your own toolchain. This is where crosstool-NG comes into play.
+want to build your own toolchain. This is where **crosstool-NG** comes into play.
 
 There are also a number of tools that build toolchains for specific needs,
 which are not really scalable. Examples are:
@@ -59,11 +59,10 @@ which are not really scalable. Examples are:
 -   Other projects (e.g., [openembedded.org](http://www.openembedded.org/)),
     which are again used to build root file systems.
 
-crosstool-NG is really targeted at building toolchains, and only toolchains.
+**crosstool-NG** is really targeted at building toolchains, and only toolchains.
 It is then up to you to use it the way you want.
 
-<a name="history"></a>
-History
+History <a name="history"></a>
 -------
 
 crosstool was first *conceived* by Dan Kegel, who offered it to the community
@@ -79,19 +78,18 @@ taking.
 
 So Yann decided to clean up crosstool in the state it was, re-order the things
 in place, add appropriate support for what he needed, that is uClibc support
-and a menu-driven configuration, named the new implementation crosstool-NG,
+and a menu-driven configuration, named the new implementation **crosstool-NG**,
 (standing for crosstool Next Generation, as many other community projects do,
 and as a wink at the TV series "Star Trek: The Next Generation" ;-) ) and made
 it available to the community, in case it was of interest to any one.
 
 In late 2014, Yann became very busy with buildroot and other projects, and so
-Bryan Hundven opted to become the new maintainer for crosstool-NG.
+Bryan Hundven opted to become the new maintainer for **crosstool-NG**.
 
-<a name="name"></a>
-Referring to crosstool-NG
--------------------------
+Referring to **crosstool-NG** <a name="name"></a>
+-----------------------------
 
-The long name of the project is crosstool-NG:
+The long name of the project is **crosstool-NG**:
 
 -   no leading uppercase (except as first word in a sentence),
 
@@ -108,8 +106,8 @@ Crosstool-NG can also be referred to by its short name CT-NG:
 The long name is preferred over the short name, except in mail subjects,
 where the short name is a better fit.
 
-When referring to a specific version of crosstool-NG, append the version
-number either as:
+When referring to a specific version of **crosstool-NG**, append the
+version number either as:
 
 -   `crosstool-NG X.Y.Z` (long name, a space, and the version string)
 
@@ -120,7 +118,7 @@ number either as:
     the version string, and the Hg ID as returned by `ct-ng version`)
     -- this is used to differentiate between releases and snapshots
 
-The frontend to crosstool-NG is the command `ct-ng`:
+The frontend to **crosstool-NG** is the command `ct-ng`:
 
 -   all in lowercase,
 
