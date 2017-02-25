@@ -1,7 +1,7 @@
 # Site settings
 
 title: crosstool-NG
-description: [Description here. This is work-in-progress]
+description: [A versatile (cross) toolchain generator]
 baseurl: '' # the subpath of your site, e.g. /blog/
 url: 'http://crosstool-ng.github.com' # the base hostname & protocol for your site
 github_username: crosstool-ng
