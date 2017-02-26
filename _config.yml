@@ -8,6 +8,7 @@ github_username: crosstool-ng
 license_url: https://raw.githubusercontent.com/crosstool-ng/crosstool-ng/master/COPYING
 mailinglist_url: https://sourceware.org/ml/crossgcc/
 irc_url: irc://irc.freenode.net/#crosstool-ng
+download_url: http://crosstool-ng.org/download/crosstool-ng/
 
 # Build settings
 

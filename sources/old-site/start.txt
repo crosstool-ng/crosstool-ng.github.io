@@ -1,28 +1,4 @@
 ~~NOCACHE~~
-====== News ======
-
-  * 2015-11-20: Released 1.22.0. Get it as [[/download/crosstool-ng/crosstool-ng-1.22.0.tar.bz2|bz2]] ([[/download/crosstool-ng/crosstool-ng-1.22.0.tar.bz2.sig|PGP sig]]) or [[/download/crosstool-ng/crosstool-ng-1.22.0.tar.xz|xz]] ([[/download/crosstool-ng/crosstool-ng-1.22.0.tar.xz.sig|PGP sig]]) //**Feature-release**//
-  * 2015-05-25: Released 1.21.0. Get it as [[/download/crosstool-ng/crosstool-ng-1.21.0.tar.bz2|bz2]] ([[/download/crosstool-ng/crosstool-ng-1.21.0.tar.bz2.sig|PGP sig]]) or [[/download/crosstool-ng/crosstool-ng-1.21.0.tar.xz|xz]] ([[/download/crosstool-ng/crosstool-ng-1.21.0.tar.xz.sig|PGP sig]]) //**Feature-release**//
-  * 2014-12-05: Source control is moving to [[https://github.com/crosstool-ng/crosstool-ng|Github]]! This will make contributing to crosstool-NG simpler, and also now we can track [[https://github.com/crosstool-ng/crosstool-ng/issues|issues]]! Read this [[https://sourceware.org/ml/crossgcc/2014-12/msg00029.html|email]] for more info!
-  * 2014-12-02: Bryan Hundven has taken over as maintainer. Yann E. MORIN continues as a developer and stays on as an admin for site and release process.
-  * 2014-09-09: Released 1.20.0. Get it as [[/download/crosstool-ng/crosstool-ng-1.20.0.tar.bz2|bz2]] ([[/download/crosstool-ng/crosstool-ng-1.20.0.tar.bz2.sig|PGP sig]]) or [[/download/crosstool-ng/crosstool-ng-1.20.0.tar.xz|xz]] ([[/download/crosstool-ng/crosstool-ng-1.20.0.tar.xz.sig|PGP sig]]) //**Feature-release**//
-  * 2014-09-05: The server now has a new IP address, and should now be reachable again; just let the DNS caches expire, so the new address propagates. The root cause is as of yet unknown, but hopefully, this will not happen anymore. Thanks to the OSUOSL guys for their help in solving this issue! :-)
-  * 2014-08-05: It seems the crosstool-NG server is unreachable for some parts of the world. The issue is being investigated (update 2014-08-11: the configuration of the server is OK; there is a routing issue somewhere).
-  * 2014-06-27: We now have a [[http://crosstool-ng.org/git|git tree]]! The Mercurial trees are now read-only, development will be done only on the git tree.
-  * 2013-10-02: Released [[/download/crosstool-ng/crosstool-ng-1.19.0.tar.bz2|1.19.0]] ( [[/download/crosstool-ng/crosstool-ng-1.19.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.19.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.19.0|fixes]] ) //**Feature-release**//
-  * 2013-03-20: The mailing list is back to operational conditions! Thanks, and well done, [[http://sourceware.org/|sourceware.org]]! :-)
-  * 2013-03-19: [[http://sourceware.org/|sourceware.org]], which is hosting [[http://sourceware.org/ml/crossgcc/|the crossgcc mailing list]], is undergoing infrastructure overhaul, so the mailing list, and its archives, will be unreachable for a good part of the week. Sorry for the inconvenience. Stay tuned for more information.
-  * 2013-01-31: Released [[/download/crosstool-ng/crosstool-ng-1.18.0.tar.bz2|1.18.0]] ( [[/download/crosstool-ng/crosstool-ng-1.18.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.18.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.18.0|fixes]] ) //**Feature-release**//
-  * 2012-11-11: Released [[/download/crosstool-ng/crosstool-ng-1.17.0.tar.bz2|1.17.0]] ( [[/download/crosstool-ng/crosstool-ng-1.17.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.17.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.17.0|fixes]] ) //**Feature-release**//
-  * 2012-10-31: The next release was due tonight. It's gonna be late, by at least a few days... :-(
-  * 2012-08-04: Released [[/download/crosstool-ng/crosstool-ng-1.16.0.tar.bz2|1.16.0]] ( [[/download/crosstool-ng/crosstool-ng-1.16.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.16.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.16.0|fixes]] ) //**Feature-release**//
-  * 2012-08-01: The next major release was due yesterday, but it is late. A few last-minute fixes to test, and it should be ready soon (expect before the week-end).
-  * 2012-07-17: Released [[/download/crosstool-ng/crosstool-ng-1.15.3.tar.bz2|1.15.3]] ( [[/download/crosstool-ng/crosstool-ng-1.15.3.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.3.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.3|fixes]] ) //(bug-fix)//
-  * 2012-05-08: Released [[/download/crosstool-ng/crosstool-ng-1.15.2.tar.bz2|1.15.2]] ( [[/download/crosstool-ng/crosstool-ng-1.15.2.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.2.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.2|fixes]] ) //(bug-fix)//
-  * 2012-05-08: Released [[/download/crosstool-ng/crosstool-ng-1.15.1.tar.bz2|1.15.1]] ( [[/download/crosstool-ng/crosstool-ng-1.15.1.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.1.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.1|fixes]] ) //(bug-fix)// **This release is broken! Do not use it!**
-  * 2012-04-30: Released [[/download/crosstool-ng/crosstool-ng-1.15.0.tar.bz2|1.15.0]] ( [[/download/crosstool-ng/crosstool-ng-1.15.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.0|fixes]] ) //**Feature-release**//
-  * 2012-04-30: The canadian patch-queue has been upstreamed.
-  * [[old_news|Older news]]
 ====== Introduction ======
 
 ===== Overview =====

@@ -16,7 +16,7 @@ layout: default
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
-        <span class="excerpt">{{ post.excerpt | strip_html }}</span>
+        <span class="excerpt">{{ post.excerpt }}</span>
         {% if post.excerpt != post.content %}
           <a class="excerpt-continue" href="{{ post.url | prepend: site.baseurl }}">continued …</a>
         {% endif %}
