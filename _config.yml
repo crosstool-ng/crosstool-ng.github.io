@@ -15,11 +15,7 @@ download_url: http://crosstool-ng.org/download/crosstool-ng/
 include: ['_pages', '_pages/docs']
 exclude: ['sources']
 
-# kramdown doesn't work well with Github-flavored md, syntax HL, so let's try:
-markdown: redcarpet
-redcarpet:
-  extensions: ['no_intra_emphasis', 'fenced_code_blocks', 'autolink', 'strikethrough', 'superscript', 'tables']
-# okay, that works nicely
+markdown: kramdown
 
 # use 'post' layout for posts by default (so it can be omitted in front matter)
 defaults:
