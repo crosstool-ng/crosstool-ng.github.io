@@ -1,24 +1,21 @@
 # Site settings
 
 title: crosstool-NG
-description: [Description here. This is work-in-progress]
+description: [A versatile (cross) toolchain generator]
 baseurl: '' # the subpath of your site, e.g. /blog/
 url: 'http://crosstool-ng.github.com' # the base hostname & protocol for your site
 github_username: crosstool-ng
 license_url: https://raw.githubusercontent.com/crosstool-ng/crosstool-ng/master/COPYING
 mailinglist_url: https://sourceware.org/ml/crossgcc/
 irc_url: irc://irc.freenode.net/#crosstool-ng
+download_url: http://crosstool-ng.org/download/crosstool-ng/
 
 # Build settings
 
 include: ['_pages', '_pages/docs']
 exclude: ['sources']
 
-# kramdown doesn't work well with Github-flavored md, syntax HL, so let's try:
-markdown: redcarpet
-redcarpet:
-  extensions: ['no_intra_emphasis', 'fenced_code_blocks', 'autolink', 'strikethrough', 'superscript', 'tables']
-# okay, that works nicely
+markdown: kramdown
 
 # use 'post' layout for posts by default (so it can be omitted in front matter)
 defaults:

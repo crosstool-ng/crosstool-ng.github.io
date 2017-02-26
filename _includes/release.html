@@ -1,0 +1,12 @@
+{% assign v_ = page.title | remove: "Released " | split: " " %}
+{% assign v = v_.first %}
+{% assign url = v | prepend: "crosstool-ng-" | prepend: site.download_url %}
+
+<p>Get the {{v}} release as
+  {% for fmt in page.formats %}
+    {% if fmt != page.formats.first %} or {% endif %}
+    {% assign tar = url | append: ".tar." | append: fmt %}
+    <a href="{{ tar }}">{{ fmt }}</a>
+    {% if page.hassig %} (<a href="{{ tar | append: ".sig" }}">PGP signature</a>){% endif %}
+    {% for d in page.digest %}{% if d == page.digest.first %}({% endif %}{% if d != page.digest.first %}, {% endif %}<a href ="{{ tar | append: "." | append: d }}">{{ d }}</a>{% if d == page.digest.last %}){% endif %}{% endfor %}
+  {% endfor %}.</p>

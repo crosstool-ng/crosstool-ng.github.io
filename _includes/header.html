@@ -15,15 +15,8 @@
 
       <div class="trigger">
         {% for page in site.pages %}
-          {% comment %}
-            Liquid's boolean operations are ... lacking. This ugly stuff is
-            just intended to excludes pages which either have no title, or
-            which are subpages of '/docs/'.
-          {% endcomment %}
-          {% if page.title %}
-            {% unless page.permalink contains '/docs/' and page.permalink != '/docs/' %}
+          {% if page.topnav %}
             <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            {% endunless %}
           {% endif %}
         {% endfor %}
       </div>

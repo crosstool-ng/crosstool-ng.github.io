@@ -1,5 +1,5 @@
 ---
-title:  "Moving to Github"
+title: Moving to Github
 ---
 I'm sure you're probably still catching up on all the updates and call
 to arms on the list of patches in patchwork, but I have one more
@@ -52,6 +52,5 @@ on, so that might stick around for a while.
 
 Let me know if you have any questions or comments.
 
-Cheers,
-
+Cheers,  
 -Bryan

@@ -1,26 +1,4 @@
 ~~NOCACHE~~
-====== News ======
-
-  * 2014-12-05: Source control is moving to [[https://github.com/crosstool-ng/crosstool-ng|Github]]! This will make contributing to crosstool-NG simpler, and also now we can track [[https://github.com/crosstool-ng/crosstool-ng/issues|issues]]! Read this [[https://sourceware.org/ml/crossgcc/2014-12/msg00029.html|email]] for more info!
-  * 2014-12-02: Bryan Hundven has taken over as maintainer. Yann E. MORIN continues as a developer and stays on as an admin for site and release process.
-  * 2014-09-09: Released 1.20.0. Get it as [[/download/crosstool-ng/crosstool-ng-1.20.0.tar.bz2|bz2]] ([[/download/crosstool-ng/crosstool-ng-1.20.0.tar.bz2.sig|PGP sig]]) or [[/download/crosstool-ng/crosstool-ng-1.20.0.tar.xz|xz]] ([[/download/crosstool-ng/crosstool-ng-1.20.0.tar.xz.sig|PGP sig]]) //**Feature-release**//
-  * 2014-09-05: The server now has a new IP address, and should now be reachable again; just let the DNS caches expire, so the new address propagates. The root cause is as of yet unknown, but hopefully, this will not happen anymore. Thanks to the OSUOSL guys for their help in solving this issue! :-)
-  * 2014-08-05: It seems the crosstool-NG server is unreachable for some parts of the world. The issue is being investigated (update 2014-08-11: the configuration of the server is OK; there is a routing issue somewhere).
-  * 2014-06-27: We now have a [[http://crosstool-ng.org/git|git tree]]! The Mercurial trees are now read-only, development will be done only on the git tree.
-  * 2013-10-02: Released [[/download/crosstool-ng/crosstool-ng-1.19.0.tar.bz2|1.19.0]] ( [[/download/crosstool-ng/crosstool-ng-1.19.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.19.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.19.0|fixes]] ) //**Feature-release**//
-  * 2013-03-20: The mailing list is back to operational conditions! Thanks, and well done, [[http://sourceware.org/|sourceware.org]]! :-)
-  * 2013-03-19: [[http://sourceware.org/|sourceware.org]], which is hosting [[http://sourceware.org/ml/crossgcc/|the crossgcc mailing list]], is undergoing infrastructure overhaul, so the mailing list, and its archives, will be unreachable for a good part of the week. Sorry for the inconvenience. Stay tuned for more information.
-  * 2013-01-31: Released [[/download/crosstool-ng/crosstool-ng-1.18.0.tar.bz2|1.18.0]] ( [[/download/crosstool-ng/crosstool-ng-1.18.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.18.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.18.0|fixes]] ) //**Feature-release**//
-  * 2012-11-11: Released [[/download/crosstool-ng/crosstool-ng-1.17.0.tar.bz2|1.17.0]] ( [[/download/crosstool-ng/crosstool-ng-1.17.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.17.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.17.0|fixes]] ) //**Feature-release**//
-  * 2012-10-31: The next release was due tonight. It's gonna be late, by at least a few days... :-(
-  * 2012-08-04: Released [[/download/crosstool-ng/crosstool-ng-1.16.0.tar.bz2|1.16.0]] ( [[/download/crosstool-ng/crosstool-ng-1.16.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.16.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.16.0|fixes]] ) //**Feature-release**//
-  * 2012-08-01: The next major release was due yesterday, but it is late. A few last-minute fixes to test, and it should be ready soon (expect before the week-end).
-  * 2012-07-17: Released [[/download/crosstool-ng/crosstool-ng-1.15.3.tar.bz2|1.15.3]] ( [[/download/crosstool-ng/crosstool-ng-1.15.3.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.3.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.3|fixes]] ) //(bug-fix)//
-  * 2012-05-08: Released [[/download/crosstool-ng/crosstool-ng-1.15.2.tar.bz2|1.15.2]] ( [[/download/crosstool-ng/crosstool-ng-1.15.2.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.2.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.2|fixes]] ) //(bug-fix)//
-  * 2012-05-08: Released [[/download/crosstool-ng/crosstool-ng-1.15.1.tar.bz2|1.15.1]] ( [[/download/crosstool-ng/crosstool-ng-1.15.1.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.1.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.1|fixes]] ) //(bug-fix)// **This release is broken! Do not use it!**
-  * 2012-04-30: Released [[/download/crosstool-ng/crosstool-ng-1.15.0.tar.bz2|1.15.0]] ( [[/download/crosstool-ng/crosstool-ng-1.15.0.tar.bz2.md5|md5]] - [[/download/crosstool-ng/crosstool-ng-1.15.0.changelog|changelog]] - [[/download/crosstool-ng/01-fixes/1.15.0|fixes]] ) //**Feature-release**//
-  * 2012-04-30: The canadian patch-queue has been upstreamed.
-  * [[old_news|Older news]]
 ====== Introduction ======
 
 ===== Overview =====
@@ -54,7 +32,7 @@ With **crosstool-NG**, you can learn precisely how each component is configured 
 
 Of course, it doesn't prevent you from doing your home work first. You have to know with some degree of exactitude what your target is (archictecture, processor variant), what it will be used for (embedded, desktop, realtime), what degree of confidence you have with each component (stability, maintainability), and so on...
 
-**NOTE:** **crosstool-NG** is a rewrite of the [[http://kegel.com/crosstool/|original crosstool]] by [[http://kegel.com/|Dan Kegel]]. Big thanks to him for putting his original work on-line!
+**NOTE:** **crosstool-NG** is a rewrite of the [[http://kegel.com/crosstool/|original crosstool]] by [[http://kegel.com/|Dan Kegel]] by Yann E. MORIN. Big thanks Dan for putting his original work on-line! And a HUGE thanks to Yann for this terrific tool!
 
 
 ===== Features =====
@@ -66,7 +44,7 @@ It's quite difficult to list all possible features available in **crosstool-NG**
   * growing number of supported architectures
     * see the [[#status|status table]] for the current list
   * support for **alternative components** in the toolchain
-    * **//uClibc-//**, **//glibc-//** or //**eglibc-**//based toolchain supported __**right now**__!
+    * **//uClibc-//**, **//glibc-//**, **//newlib-//**, //**musl-libc-**//based toolchain supported __**right now**__!
     * others easy to implement
   * different target OS supported
     * **//Linux//**
@@ -82,6 +60,7 @@ It's quite difficult to list all possible features available in **crosstool-NG**
   * debug facilities
     * native and cross gdb, gdbserver
     * debugging libraries: dmalloc, duma
+    * debugging tools: ltrace, strace
     * restart a build at any step
   * **sample configurations** repository usable as starting point for your own toolchain
     * see the [[#status|status table]] for the current list
@@ -91,13 +70,31 @@ It's quite difficult to list all possible features available in **crosstool-NG**
 
 You can:
   * either get released versions and fixes there: __''[[/download/crosstool-ng/]]''__
-  * or check-out the development stuff, or browse the code on-line, from the git repos at: __''[[/git/crosstool-ng/]]''__
+  * or check-out the development stuff, or browse the code on-line, from the git repos at:
+    * __''[[/git/crosstool-ng/]]''__
+    * https://github.com/crosstool-ng/crosstool-ng (main development site)
 
 ===== Using a released version =====
 
 If you decide to use a released version (replace ''VERSION'' with the actual version you choose; the latest version is listed at the top of this page):
 
   wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-VERSION.tar.bz2
+  
+Starting with 1.21.0, releases are signed with Bryan Hundven's pgp key
+
+The fingerprint is:
+  561E D9B6 2095 88ED 23C6 8329 CAD7 C8FC 35B8 71D1
+The public key is found on: http://pgp.surfnet.nl/
+  35B871D1
+
+To validate the release tarball run you need to import the key from the keyserver and download the signature of the tarball:
+  gpg --recv-keys 35B871D1
+  wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-VERSION.tar.bz2.sig
+  
+Now, with the tarball and signature in the same directory, you can verify the tarball:
+  gpg --verify crosstool-ng-VERSION.tar.bz2.sig
+
+Now you can unpack and install crosstool-NG:
   tar xjf crosstool-ng-VERSION.tar.bz2
   cd crosstool-ng-VERSION
   ./configure --prefix=/some/place
@@ -143,30 +140,58 @@ Then, if all goes well, your toolchain will be available and you can set access 
 
 See [[#contacts|contacts, below]] for how to ask for further help.
 
-__**Note 1**__: If you elect to build a uClibc-based toolchain, you will **have** to prepare a config file for uClibc.
+__**Note 1**__: If you elect to build a uClibc-based toolchain, you **will have** to prepare a config file for uClibc with <= crosstool-NG-1.21.0.
+In >= crosstool-NG-1.22.0 you only need to prepare a config file for uClibc(or uClibc-ng) if you really need a custom config for uClibc.
 
 __**Note 2**__: If you call ''ct-ng -''''-help'' you will get help for ''make(2)''. This is because ''ct-ng'' is in fact a ''make(2)'' script. There is no clean workaround for this.
-
 ===== Using the latest development stuff =====
 
-If you want to use the latest development stuff:
+I usually setup my development environment like this:
 
-  git clone git://crosstool-ng.org/crosstool-ng
+  mkdir $HOME/build
+  cd $HOME/build
+  git clone https://github.com/crosstool-ng/crosstool-ng
   cd crosstool-ng
   ./bootstrap
-  ./configure --enable-local
+  ./configure --prefix=$HOME/.local
   make
-  ./ct-ng help
-  ./ct-ng menuconfig
-  ./ct-ng build
+  make install
+
+Now make sure $HOME/.local/bin is in your PATH (Newer Linux distributions [fc23, ubuntu-16.04, debian stretch] should have this in the PATH already):
+
+  echo -ne "\n\nif [ -d \"$HOME/.local/bin\" ]; then\n    PATH=\"$HOME/.local/bin:$PATH\"\nfi" >> ~/.profile
+
+Then source your .profile to add the PATH to your current environment, or logout and log back in:
+
+  source ~/.profile
+
+Now I create a directory to do my toolchain builds in:
+
+  mkdir $HOME/tc/
+  cd $HOME/tc/
+
+Say we want to build armv6-rpi-linux-gnueabi:
+
+  mkdir armv6-rpi-linux-gnueabi
+  cd armv6-rpi-linux-gnueabi
+  ct-ng armv6-rpi-linux-gnueabi
+  
+Now build the sample:
+
+  ct-ng build
 
 ===== Repository layout =====
 
 ^ URL ^ Purpose ^
 | ''[[http://crosstool-ng.org/git]]''  | All available development repositories  |
-| ''[[http://crosstool-ng.org/git/crosstool-ng/]]''  | Main development repository  |
+| ''[[http://crosstool-ng.org/git/crosstool-ng/]]''  | Mirror of the development repository  |
+| ''[[https://github.com/crosstool-ng/crosstool-ng/]]'' | Main development repository  |
 
 To clone the main repository:
+
+  git clone https://github.com/crosstool-ng/crosstool-ng
+  
+You can also download from our mirror at crosstool-ng.org:
 
   git clone git://crosstool-ng.org/crosstool-ng
 
@@ -179,9 +204,16 @@ Alternatively, if you are sitting behind a restrictive proxy that does not let t
 
 These are the old Mercurial repositories. They are now read-only: http://crosstool-ng.org/hg/
 
+===== Pull Requests and Issues =====
+
+You can find open Pull Requests on GitHub [[https://github.com/crosstool-ng/crosstool-ng/pulls|here]] and you can find open issues [[https://github.com/crosstool-ng/crosstool-ng/issues|here]].
+
+
 ===== Patchwork =====
 
-The [[http://patchwork.ozlabs.org/project/crosstool-ng/|list of pending patches]] is available on a [[http://jk.ozlabs.org/projects/patchwork/|patchwork]].
+We previously used patchwork for development, but it is no longer used. I'd like to see patches that are still applicable turned into Pull Requests on GitHub.
+
+You can find the [[http://patchwork.ozlabs.org/project/crosstool-ng/|list of pending patches]] available on [[http://jk.ozlabs.org/projects/patchwork/|patchwork]].
 
 
 ====== Contacts ======
@@ -190,7 +222,7 @@ Here are a few hints on how to ask for help:
 
 ^ Problem ^ Where/whom to ask for help ^
 | -- A component (gcc, binutils, C library...) does not build.\\ -- Generated files do not work.\\ -- **crosstool-NG** breaks.\\ -- You have improvements and/or fixes for **crosstool-NG** or this WiKi page.  | Send a mail **''To:''** [[http://sourceware.org/ml/crossgcc/|the crossgcc mailing list]]\\ Alternatively, there is an [[#IRC who's who, and usual time of presence|IRC]] channel where some of us wander from time to time...\\ __**Note:**__ prefer posting on the mailing list before going to the IRC channel. Using the mailing list will allow you to ask more detailed questions than the IRC channel usually allows for.  |
-| -- You find **crosstool-NG** usefull.\\ -- You succeeded in your project partly thanks to **crosstool-NG**.  | Drop [[yann.morin.1998@free.fr|me]] a little explanation (without breaking your company's rules, if any), and I'll post your [[#Testimonials|feedback]] on this page. :-) |
+| -- You find **crosstool-NG** usefull.\\ -- You succeeded in your project partly thanks to **crosstool-NG**.  | Drop [[bryanhundven@gmail.com|me]] a little explanation (without breaking your company's rules, if any), and I'll post your [[#Testimonials|feedback]] on this page. :-) |
 | -- You need personal assistance.\\ -- You demand that I add a feature you need.\\ -- You demand that I answer your mails instantly.  | Well, I program **crosstool-NG** on my free time, on a voluntary basis, without being paid (so far), and mostly because I needed it. It is based on code freely contributed by many people over many years. How can you demand anything? If at least you offered payement... |
 | -- You are a //nice girl from Russia// (or wherever), and you have //pictures of your big breast to show me//.  | Send mail **''To:''** /dev/null :-P |
 
@@ -243,7 +275,6 @@ Here is the list of target architectures **crosstool-NG** currently supports:
 | ''Alpha''  |  ?  |  Y  |  Y  |  ?  |
 | ''ARM''  |  Y  |  Y  |  Y  |  ?  |
 | ''AVR32'' //(EXP)//  |  Y  |  //N.A.//  |  Y  |  //N.A.//  |
-| ''Blackfin'' //(EXP)//  |  //N.A.//  |  Y  |  Y  |  //N.A.//  |
 | ''microblaze''  |  Y  |  Y  |  Y  |  //N/A//  |
 | ''MIPS''  |  Y  |  Y  |  Y  |  //EXP//  |
 | ''OpenRISC/or32''(+)  |  ?  ||  Y  |  //N.A.//  |
@@ -275,23 +306,19 @@ This is an informal, somewhat-unordered TODO list:
   * __**add a test suite**__ for the generated toolchains
     * test-build is here
     * need to test generated toolchains (needs real HW or emulator)
-  * add more debug facilities
-  * canadian build
-    * re-arrange samples directory ?
   * add other hosts, targets or systems support
     * other hardware architectures
     * Windows
       * Cygwin
         * works as host
         * having target support is a TODO (would be nice)
-      * Mingw32
-        * totaly untested
     * MacOS-X
-      * seems functional as host (some reports sugest it is, at least)
-      * completely unknown to me as wether it could be added as a target
+      * seems functional as host (some reports suggest it is, at least)
+      * completely unknown to me as whether it could be added as a target
     * *BSD systems
       * absolutely unknown to me
-    * ...
+    * ... 
+  * Multilib support
   * create a collection of standard targets [on-going in sub-directory ''samples/'']
   * ...
 
@@ -353,19 +380,37 @@ This will need ''[[http://sourceware.org/newlib/|newlib]]'' being supported firs
 
 ==== MacOS X ====
 
-MacOS X as a build system seems to have issues with the configurator: you must pass KBUILD_NO_NLS=1 on the make command line, as to not configure the internationalisation. Thanks go to Allan Clark for the patch.
+Mac OS X does not support static linking!
 
-Also, some of the tools there are not up-to-date with the one required by **crosstool-NG**:
-  * the ''bash'' version there (2.05b) doesn't support ''set -E''. Only starting with 3.0 does ''bash'' support ''set -E''. I have no fix yet.
-  * the ''sed'' version does not understand some flags (''-r'', for extended regular expressions, is not accepted). So the install fails.
-  * the ''date'' command does accept nanoseconds format ''%N''.
-  * seems also that ''bash'' is limited to doing 32-bit maths, when I need 64-bit maths (cause of nanoseconds).
+Some of the tools there are not up-to-date with the one required by **crosstool-NG**. Therefore we highly recommend using [[http://brew.sh/|Homebrew]].
 
+Here is a list of tools I personally recommend installing with Homebrew before using crosstool-NG:
+
+  * autoconf
+  * automake
+  * bash      (if you plan to use this as your shell, don't forget to update /etc/shells with /usr/local/bin/bash)
+  * binutils
+  * coreutils
+  * cvs
+  * gawk
+  * gettext
+  * git
+  * gnu-sed
+  * grep
+  * help2man
+  * libtool
+  * make
+  * ncurses
+  * pkg-config
+  * wget
+  * xz
+
+Crosstool-NG should automatically find the Homebrew versions of tools before the normal tools without any intervention with ./configure (i.e. /gsed/ will be searched before /sed/, /glibtool/ will be searched before /libtool/, etc...).
 ===== Exotic languages =====
 
 ==== Java ====
-I have been able to build a java cross-compiler for some architectures starting with 1.0.0. Thorough testing is lacking, though. Any taker?
-
+GCC Java support is experimental, and as per https://gcc.gnu.org/java/, it also seems to not get updated much.
+I'm thinking GCC Java support is not very well supported upstream. As such, not very well supported here either.
 ==== Fortran ====
 Fortran is supported as of release 1.1.0. A Fortran cross-compiler was built for some architectures, but was not tested due to my ignorance of this language. Any taker?
 
