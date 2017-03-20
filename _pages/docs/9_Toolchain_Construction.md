@@ -7,7 +7,7 @@ permalink: /docs/toolchain-construction/
 This is the result of a [discussion with Francesco
 Turco](http://sourceware.org/ml/crossgcc/2011-01/msg00060.html).
 
-Francesco has a [nice tutorial for
+Francesco had a [nice tutorial for
 beginners](http://fturco.org/wiki/doku.php?id=debian:cross-compiler)
 [dead link, Wayback Machine has no archived version],
 along with a sample, step-by-step procedure to build a toolchain for an
@@ -88,9 +88,9 @@ or core compiler. So here is the new dependency list:
 
 B needs C which needs B. Chicken’n'egg, again. To solve this one, we
 will need to build a C library that will only install its headers and
-start files. The start files are a very few files that gcc needs to be
-able to turn on thread local storage (TLS) on an NPTL system. So now we
-have:
+start files. The start files (also called "C runtime", or CRT) are
+a very few files that gcc needs to be able to turn on thread local
+storage (TLS) on an NPTL system. So now we have:
 
 -   the final compiler needs the C library, to know how to use it,
 
@@ -186,12 +186,12 @@ recently. So, if the distro is not too recent, chances are that we will
 have to build those libraries (which we do below). The affected
 libraries are:
 
--   the GNU Multiple Precision Arithmetic Library, GMP
+-   the GNU Multiple Precision Arithmetic Library, GMP;
 
 -   the C library for multiple-precision floating-point computations
-    with correct rounding, MPFR
+    with correct rounding, MPFR;
 
--   the C library for the arithmetic of complex numbers, MPC
+-   the C library for the arithmetic of complex numbers, MPC.
 
 The dependencies for those libraries are:
 
@@ -234,20 +234,26 @@ additional, optional libraries are used to enable advanced features in
 gcc, such as loop optimisation (GRAPHITE) and Link Time Optimisation
 (LTO). If you want to use these, you’ll need three additional libraries:
 
-To enable GRAPHITE: - the Parma Polyhedra Library, PPL - the Chunky Loop
-Generator, using the PPL backend, CLooG/PPL
+To enable GRAPHITE, depending on GCC version, it may need one or more of
+the following:
+- the Parma Polyhedra Library, PPL;
+- the Integer Set Library, ISL;
+- the Chunky Loop Generator, using the PPL backend, CLooG/PPL;
+- the Chunky Loop Generator, using the ISL backend, CLooG.
 
 To enable LTO: - the ELF object file access library, libelf
 
 The dependencies for those libraries are:
 
--   PPL requires GMP
+-   PPL requires GMP;
 
--   CLooG/PPL requires GMP and PPL
+-   CLooG/PPL requires GMP and one of PPL or ISL;
 
--   libelf has no pre-requisites
+-   ISL has no prerequisites;
 
-The list now looks like (optional libs marked with \*):
+-   libelf has no pre-requisites.
+
+The list now looks like:
 
 1.  GMP
 
@@ -255,11 +261,13 @@ The list now looks like (optional libs marked with \*):
 
 3.  MPC
 
-4.  PPL \*
+4.  PPL (if needed)
 
-5.  CLooG/PPL \*
+5.  ISL (if needed)
 
-6.  libelf \*
+5.  CLooG (if needed)
+
+6.  libelf (if needed)
 
 7.  binutils
 
@@ -275,10 +283,11 @@ The list now looks like (optional libs marked with \*):
 
 13. final compiler
 
-This list is now complete! Wouhou! :-)
+This list is now complete! Wouhou! Or is it?
 
-So the list is complete. But why does crosstool-NG have more steps?
--------------------------------------------------------------------
+
+But why does crosstool-NG have more steps?
+------------------------------------------
 
 The already thirteen steps are the necessary steps, from a theoretical
 point of view. In reality, though, there are small differences; there
@@ -286,11 +295,14 @@ are three different reasons for the additional steps in crosstool-NG.
 
 First, the GNU binutils do not support some kinds of output. It is not
 possible to generate *flat* binaries with binutils, so we have to use
-another component that adds this support: `elf2flt`. Another binary
-utility called `sstrip` has been added. It allows for super-stripping
-the target binaries, although it is not strictly required.
+another component that adds this support: `elf2flt`. `elf2flt` also
+requires the `zlib` compression library - we may not be able to use
+the host's zlib if we're building a canadian or cross-native toolchain.
 
-Second, crosstool-NG can also build some additional debug utilities to
+Second, localizations of the toolchain require additional libraries
+on some host OSes: `gettext` and `libiconv`.
+
+Third, crosstool-NG can also build some additional debug utilities to
 run on the target. This is where we build, for example, the `cross-gdb`,
 the `gdbserver` and the native `gdb` (the last two run on the target,
 the first runs on the same machine as the toolchain). The others

@@ -11,7 +11,7 @@ it will support, the version of the components you want to use, etc.
 The value for those options are then stored in a configuration file.
 
 The configurator works the same way you configure your Linux kernel. It is
-assumed you now how to handle this.
+assumed you know how to handle this.
 
 To enter the menu, type:
 
@@ -28,17 +28,41 @@ that you can use:
 
 -   `CT_TARGET`: Represents the target tuple you are building for.
     You can use it for example in the installation/prefix directory,
-    such as: `/opt/x-tools/${CT_TARGET}`.
+    such as: `/opt/x-tools/${CT_TARGET}`. If needed, parts of `CT_TARGET`
+    are also available as `CT_TARGET_ARCH`, `CT_TARGET_VENDOR`,
+    `CT_TARGET_KERNEL` and `CT_TARGET_SYS`.
 
 -   `CT_TOP_DIR`: The top directory where crosstool-NG is running.
-    You shouldn't need it in most cases. There is one case where you
-    may need it: If you have local patches and you store them in your
-    running directory, you can refer to them by using `CT_TOP_DIR`,
-    such as: `${CT_TOP_DIR}/patches.myproject`.
+    You shouldn't need it in most cases. One case where you
+    may need it is if you have local patches or config files and
+    you store them in your current working directory, you can refer
+    to them by using `CT_TOP_DIR`, such as:
+    `${CT_TOP_DIR}/patches.myproject`.
 
 -   `CT_VERSION`: The version of crosstool-NG you are using. Not much
     use for you, but it's there if you need it.
 
+-   You can also refer to the config variables recursively, but take
+    care to avoid circular dependencies or nesting the references too
+    deep (crosstool-NG currently only follows them to a depth of 10).
+
+
+Sample configurations
+---------------------
+
+Crosstool-NG ships with several sample configurations (pre-configured toolchains
+that are known to build and work). Sample names are 1- to 4-part tuples.
+To get the list of these samples and see more detailed information on any sample,
+do (replace "arm-unknown-linux-gnueabi" with the sample name you want to view):
+
+    ct-ng list-samples
+    ct-ng show-arm-unknown-linux-gnueabi
+
+Once you chose one sample as a starting point, load it as a base and fine-tune
+using `ct-ng menuconfig` as described above:
+
+    ct-ng arm-unknown-linux-gnueabi
+    ct-ng menuconfig
 
 Interesting config options
 --------------------------
@@ -56,7 +80,8 @@ Interesting config options
     place in the vendor part of the target tuple. It shall *not*
     contain spaces or dashes. Usually, keep it to a one-word string,
     or use underscores to separate words if you need. Avoid dots,
-    commas, and special characters.
+    commas, and special characters. It can be set to empty, to
+    remove the vendor string from the target tuple.
 
 -   `CT_TARGET_ALIAS`: An alias for the toolchain. It will be used as
     a prefix to the toolchain tools. For example, you will have
@@ -65,21 +90,20 @@ Interesting config options
 Also, if you think you don't see enough versions, you can try to enable one of
 those:
 
--   `CT_OBSOLETE`: Show obsolete versions or tools. Most of the time,
+-   `CT_OBSOLETE`: Show obsolete versions of tools. Most of the time,
     you don't want to base your toolchain on too old a version (of
     gcc, for example). But at times, it can come handy to use such an
-    old version for regression tests. Those old versions are hidden
+    old version for regression tests or to support some outdated
+    system configuration. Those old versions are hidden
     behind `CT_OBSOLETE`. Those versions (or features) are so marked
     because maintaining support for those in crosstool-NG would be too
-    costly, time-wise, and time is dear.
+    costly, time-wise, and time is dear. Note that these versions are
+    likely going to disappear in the next crosstool-NG release.
 
--  `CT_EXPERIMENTAL`: Show experimental versions or tools. Again, you
-    might not want to base your toolchain on too recent tools
-    (e.g., gcc) for production. But if you need a feature present only
-    in a recent version, or a new tool, you can find them hidden
-    behind `CT_EXPERIMENTAL`. Those versions (or features) did not
-    (yet) receive thorough testing in crosstool-NG, and/or are not
-    mature enough to be blindly trusted.
+-   `CT_EXPERIMENTAL`: Show experimental versions of tools and crosstool-NG
+    features.  This may enable using unreleased versions of the tools,
+    or configure the toolchain in a way that is not thoroughly tested.
+    Use with care.
 
 
 Re-building an existing toolchain
@@ -113,18 +137,11 @@ Then, you can review and change the configuration by running:
 
     ct-ng menuconfig
 
-
-Using as a backend for a build-system
--------------------------------------
-
-Crosstool-NG can be used as a backend for an automated build-system. In this
-case, some components that are expected to run on the target (e.g., the native
-gdb, ltrace, DUMA …) are not available in the menuconfig, and they are not
-build either, as it is considered the responsibility of the build-system to
-build its own versions of those tools.
-
-If you want to use crosstool-NG as a backend to generate your toolchains for
-your build-system, you have to set and export this environment variable (not
-case sensitive, you can say `Y`):
-
-    CT_IS_A_BACKEND=y
+> **Note**
+> 
+> The same procedure applies to rebuilding the toolchain with a newer
+> crosstool-NG version. Perform `ct-ng oldconfig` prior to building the toolchain!
+> Otherwise, the options introduced in the new release will not be set to their
+> default values, and this will result in errors later on! If you cloned a Git
+> repository, you need to do `ct-ng oldconfig` each time you do a `git pull` or
+> `git fetch`.

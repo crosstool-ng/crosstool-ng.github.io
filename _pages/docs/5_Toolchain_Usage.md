@@ -9,27 +9,31 @@ your `PATH`, such as:
 
     export PATH="${PATH}:/your/toolchain/path/bin"
 
-and then using the `--host` tuple to tell the build systems to use your
-toolchain (if the software package uses the autotools system you should also
+Depending on the project being compiled, there may be different ways
+to specify the toolchain.
+
+If the software uses GNU autotools or a similar configure script, you shoul
+use the `--host` tuple to tell the build system to use your toolchain
+(if the software package uses the autotools system you should also
 pass `--build`, for completeness):
 
     ./configure --host=your-host-tuple --build=your-build-tuple
 
-or
+Other systems may need, for example:
 
     make CC=your-host-tuple-gcc
-
-or
-
     make CROSS_COMPILE=your-host-tuple-
+    make CHOST=your-host-tuple
 
-and so on …
+and so on. Please read the documentation of the package being compiled
+as to how it can be cross-compiled.
 
 > **Note**
 >
-> in the above example, `host` refers to the host of your program, not
-> the host of the toolchain; and `build` refers to the machine where you
-> build your program, that is the host of the toolchain.
+> in the above example, `host` refers to the host of your program (i.e.
+> the target of the toolchain), not the host of the toolchain; and
+> `build` refers to the machine where you build your program, that
+> is the host of the toolchain.
 
 Assembling a root filesystem
 ----------------------------
@@ -50,7 +54,7 @@ location into which we place only the files we want to have on our target.
 
 There are four schools of thought here:
 
- -  **Option i)**: Install directly into the sysroot of the toolchain.
+ -  **Option 1**: Install directly into the sysroot of the toolchain.
 
     By default (i.e., if you don’t pass any arguments to the tools which
     would change this behaviour) the toolchain that is built by
@@ -76,7 +80,7 @@ There are four schools of thought here:
         $ make
         $ make DESTDIR=/<ct-ng install path>/<host tuple>/sysroot install
 
- -  **Option ii)**: Copy the toolchain’s sysroot to the `staging` area.
+ -  **Option 2**: Copy the toolchain’s sysroot to the `staging` area.
 
     If you start off by copying the toolchain’s sysroot directory to
     your staging area, you can simply proceed to install all your
@@ -109,7 +113,7 @@ There are four schools of thought here:
         $ make
         $ make DESTDIR=/path/to/staging install
 
- -  **Option iii)**: Use separate staging and sysroot directories.
+ -  **Option 3**: Use separate staging and sysroot directories.
 
     In this scenario you use a staging area to install programs, but you do
     not pre-fill that staging area with the toolchain’s sysroot. In this case
@@ -125,7 +129,7 @@ There are four schools of thought here:
         $ make
         $ make DESTDIR=/path/to/staging install
 
- -  **Option iv)**: A mix of ii) and iii), using carefully crafted union mounts.
+ -  **Option 4**: A mix of options 2 and 3, using carefully crafted union mounts.
 
     The staging area is a union mount of:
 
@@ -140,12 +144,12 @@ There are four schools of thought here:
         create union mounts. Additionally, union mounts are not yet
         mainstream in the Linux kernel, so it requires patching. There
         is a FUSE-based unionfs implementation, but development is
-        almost stalled, and there are a few gotchas…
+        almost stalled, and there are a few gotchas.
 
             $ (good luck!)
 
 It is strongly advised not to use the toolchain sysroot directory as an
-install directory (i.e., option i)) for your programs/packages. If you do
+install directory (i.e., option 1) for your programs/packages. If you do
 so, you will not be able to use your toolchain for another project. It
 is even strongly advised that your toolchain is chmod-ed to read-only
 once successfully install, so that you don’t go polluting your toolchain
@@ -240,3 +244,37 @@ Here is how populate works:
                 the file in `dst_dir`
             -   if it was not found in the sysroot, this is an error.
 
+
+The cross-ldd script
+--------------------
+
+There is another script provided by crosstool-NG to work with the sysroot
+on the host. A dynamically linked application will load certain shared
+libraries at runtime. These libraries in turn may require some more shared
+libraries as dependencies. The search paths for each of these dynamic
+objects differ, and finding the shared libraries required for a given
+application is not always trivial. Crosstool-NG attempts to solve this
+task by providing a `${CT_TARGET}-ldd` script in the generated toolchain
+(optionally, if the "Install a cross ldd-like helper" option is selected
+in the configuration).
+
+This script recursively resolves all the dynamic library dependencies
+and outputs the list of libraries in a format compatible with that of
+GNU libc's `ldd` script. It needs to have the system root specified,
+using either the `--root` option or the `CT_XLDD_ROOT` environment variable.
+
+For example:
+
+    PATH=~/x-tools/powerpc64-multilib-linux-gnu/bin:$PATH
+    powerpc64-multilib-linux-gnu-gcc -o example example.c
+    powerpc64-multilib-linux-gnu-ldd --root=`powerpc64-multilib-linux-gnu-gcc -print-sysroot` example
+
+produces an output like this:
+
+````
+        libc.so.6 => /lib64/libc.so.6 (0x00000000deadbeef)
+        ld64.so.1 => /lib64/ld64.so.1 (0x00000000deadbeef)
+````
+
+The load addresses are obviously bogus, as this script does not actually
+load the libraries.

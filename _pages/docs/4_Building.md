@@ -10,17 +10,48 @@ To build the toolchain, simply type:
 
 This will use the above configuration to retrieve, extract and patch the
 components, build, install and eventually test your newly built toolchain.
+If all goes well, you should see something like this:
 
-You are then free to add the toolchain /bin directory in your PATH to use it
+````
+[INFO ]  Performing some trivial sanity checks
+[INFO ]  Build started 20170319.002217
+[INFO ]  Building environment variables
+[EXTRA]  Preparing working directories
+[EXTRA]  Installing user-supplied crosstool-NG configuration
+[EXTRA]  =================================================================
+[EXTRA]  Dumping internal crosstool-NG configuration
+[EXTRA]    Building a toolchain for:
+[EXTRA]      build  = x86_64-pc-linux-gnu
+[EXTRA]      host   = x86_64-pc-linux-gnu
+[EXTRA]      target = mipsel-sde-elf
+[EXTRA]  Dumping internal crosstool-NG configuration: done in 0.05s (at 00:02)
+[INFO ]  =================================================================
+[INFO ]  Retrieving needed toolchain components' tarballs
+[EXTRA]    Retrieving 'gmp-6.1.2'
+[EXTRA]    Saving 'gmp-6.1.2.tar.xz' to local storage
+[EXTRA]    Retrieving 'mpfr-3.1.5'
+[EXTRA]    Saving 'mpfr-3.1.5.tar.xz' to local storage
+...
+[INFO ]  Installing cross-gdb
+[EXTRA]    Configuring cross-gdb
+[EXTRA]    Building cross-gdb
+[EXTRA]    Installing cross-gdb
+[EXTRA]    Installing '.gdbinit' template
+[INFO ]  Installing cross-gdb: done in 98.55s (at 10:51)
+[INFO ]  =================================================================
+[INFO ]  Cleaning-up the toolchain's directory
+[INFO ]    Stripping all toolchain executables
+[EXTRA]    Creating toolchain aliases
+[EXTRA]    Removing access to the build system tools
+[EXTRA]    Removing installed documentation
+[INFO ]  Cleaning-up the toolchain's directory: done in 0.42s (at 10:52)
+[INFO ]  Build completed at 20170319.003309
+[INFO ]  (elapsed: 10:51.42)
+[INFO ]  Finishing installation (may take a few seconds)...
+````
+
+You are then free to add the toolchain's `/bin` directory in your PATH to use it
 at will.
-
-In any case, you can get some terse help. Just type:
-
-    ct-ng help
-
-or:
-
-    man 1 ct-ng
 
 
 Stopping and restarting a build
@@ -71,14 +102,6 @@ option `CT_DEBUG_CT_SAVE_STEPS`, and that the previous build effectively went
 that far.
 
 
-Building all toolchains at once
--------------------------------
-
-You can build all samples; simply call:
-
-    ct-ng build-all
-
-
 Overriding the number of jobs
 -----------------------------
 
@@ -92,75 +115,27 @@ which tells crosstool-NG to override the number of jobs to 4.
 
 You can see the actions that support overriding the number of jobs in the
 help menu. Those are the ones with `[.#]` after them (e.g., `build[.#]` or
-`build-all[.#]`, and so on …).
+`build-all[.#]`, and so on).
 
 > **Note**
->
+> 
 > The crosstool-NG script `ct-ng` is a Makefile-script. It does **not**
 > execute in parallel (there is not much to gain). When speaking of
 > jobs, we are refering to the number of jobs when making the
 > **components**. That is, we speak of the number of jobs used to build
-> gcc, glibc, and so on…
+> gcc, glibc, and so on.
 
 
-Tools wrapper
--------------
+Building all toolchains at once
+-------------------------------
 
-Starting with gcc-4.3 come two new dependencies: GMP and MPFR. With gcc-4.4,
-come three new ones: PPL, CLooG/ppl and MPC. With gcc-4.5 again comes a new
-dependency on libelf. These are libraries that enable advanced features to
-gcc. Additionally, some of those libraries can be used by binutils and gdb.
-Unfortunately, not all systems on which crosstool-NG runs have all of those
-libraries. And for those that do, the versions of those libraries may be
-older than the version required by gcc (and binutils and gdb).
-To date, Debian stable (aka Lenny) is lagging behind on some, and is missing
-the others.
+You can build all samples; simply call:
 
-This is why crosstool-NG builds its own set of libraries as part of the
-toolchain.
+    ct-ng build-all
 
-The companion libraries can be built either as static libraries, or as shared
-libraries. The default is to build static libraries, and is the safe way.
-If you decide to use static companion libraries, then you can stop reading
-this section.
-
-But if you prefer to have shared libraries, then read on …
-
-Building shared companion libraries poses no problem at build time, as
-crosstool-NG correctly points gcc (and binutils and gdb) to the correct
-place where our own version of the libraries are installed. But it poses a
-problem when gcc et al. are run: the place where the libraries are is most
-probably not known to the host dynamic linker. Still worse, if the host
-system has its own versions, then ld.so would load the wrong libraries!
-
-So we have to force the dynamic linker to load the correct version. We do
-this by using the `LD_LIBRARY_PATH` variable, that informs the dynamic linker
-where to look for shared libraries prior to searching its standard places.
-But we can’t impose that burden on all the system (because it’d be a
-nightmare to configure, and because two toolchains on the same system may use
-different versions of the libraries); so we have to do it on a per-toolchain
-basis.
-
-So we rename all binaries of the toolchain (by adding a dot `.` as their
-first character), and add a small program, the so-called "tools wrapper",
-that correctly sets `LD_LIBRARY_PATH` prior to running the real tool.
-
-First, the wrapper was written as a POSIX-compliant shell script. That shell
-script is very simple, if not trivial, and works great. The only drawback is
-that it does not work on host systems that lack a shell, for example the
-MingW32 environment.
-To solve the issue, the wrapper has been re-written in C, and compiled at
-build time. This C wrapper is much more complex than the shell script, and
-although it seems to be working, it’s been only lightly tested.
-Some of the expected short-comings with this C wrapper are:
-
--   Multi-byte file names may not be handled correctly.
-
--   It’s really big for what it does.
-
-So, the default wrapper installed with your toolchain is the shell script.
-If you know that your system is missing a shell, then you shall use the
-C wrapper (and report back whether it works, or does not work, for you).
-
-A final word on the subject: do not build shared libraries. Build them
-static, and you’ll be safe.
+Note that it is *very* time consuming (depending on your machine configuration
+and host OS, it takes from 24 hours to a full week). By default, this removes
+each build tree after a *successful* build, but leaves the unpacked/patched
+sources so that they can be re-used by the samples that follow). However, even
+that consumes considerable amount of disk space given the variety of component
+versions represented in samples.
