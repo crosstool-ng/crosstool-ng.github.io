@@ -4,63 +4,39 @@ title: Contributing to crosstool-NG
 permalink: /docs/contribute/
 ---
 
-> **Note**
->
-> The following information is outdated!
-> Github should now be used for both bug reports and contributions.
-
-<!--- TODO: update entire section -->
-
 Sending a bug report
 --------------------
 
-If you need to send a bug report, please send a mail with subject prefixed
-with `[CT_NG]` with to following destinations:
+Please file the bug reports on [Github](https://github.com/crosstool-ng/crosstool-ng/issues).
 
-    TO: yann.morin.1998 (at) free.fr
-    CC: crossgcc (at) sourceware.org
+Crosstool-NG also has a mailing list at [crossgcc@sourceware.org](mailto:crossgcc@sourceware.org).
+Archive and subscription info can be found here:
+[https://sourceware.org/ml/crossgcc/](https://sourceware.org/ml/crossgcc/)
+
+Sometimes you may be able to contact a maintainer on IRC at the #crosstool-ng
+channel on the FreeNode net (irc.freenode.net).
+
+Using a mailing list or IRC to triage an issue is okay. If it looks like a bug,
+you'll be asked to file an issue at Github. If it looks like a pilot error,
+you might get an advice over the mailing list or IRC faster.
 
 
 Sending patches
 ---------------
 
-If you want to enhance crosstool-NG, there’s a to-do list in the `TODO`
-file.
+The preferred method of patch submission is via the Github's pull
+requests. The status of currently pending pull requests can be
+checked [here](https://github.com/crosstool-ng/crosstool-ng/pulls).
 
-When updating a package, please include the category and component in
-the start of the description. For example:
+Patches are also welcome at the mailing list.
 
-    cc/gcc: update to the Linaro 2011.09 release
-
-Here is the (mostly-complete) list of categories and components:
-
-| Category       | Components                                                |
-|----------------|-----------------------------------------------------------|
-| arch           | alpha, arm, mips, powerpc…                                |
-| cc             | gcc                                                       |
-| binutils       | binutils, elf2flt, sstrip                                 |
-| libc           | eglibc, uClibc, glibc, newlib, mingw, none                |
-| kernel         | linux, mingw32, bare-metal                                |
-| debug          | dmalloc, duma, gdb, ltrace, strace                        |
-| complibs       | gmp, mpfr, ppl, cloog, mpc, libelf                        |
-| comptools      | make, m4, autoconf, automake, libtool                     |
-
-| Category       | Purpose [these categories have no component part]         |
-|----------------|-----------------------------------------------------------|
-| samples        | when adding/updating/removing a sample                    |
-| kconfig        | for stuff in the kconfig/ dir                             |
-| docs           | for changes to the documentation                          |
-| configure      | for changes to `./configure` and/or `Makefile.in`         |
-| config         | for stuff in `config/` not covered above                  |
-| scripts        | for stuff in `scripts/` not covered above                 |
-
-Patches should come with the appropriate *SoB line*. An SoB line is
+Patches should come with the appropriate *Signed-off-by line* (SOB line). An SOB line is
 typically something like:
 
     Signed-off-by: John DOE <john.doe@somewhere.net>
 
-The SoB line is clearly described in “Documentation/SubmittingPatches”,
-section 12, of your favourite Linux kernel source tree.
+Why this line is needed is well described in the
+[Linux kernel's documentation on patch submission](https://www.kernel.org/doc/html/latest/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin).
 
 You can also add any of the following lines if applicable:
 
@@ -68,5 +44,9 @@ You can also add any of the following lines if applicable:
     Tested-by:
     Reviewed-by:
 
-For larger or more frequent contributions, Mercurial should be used.
-There is a nice, complete and step-by-step tutorial in section C.
+If submitting patches over the mailing list, please also follow other
+guidelines described in the [Linux kernel's guide](https://www.kernel.org/doc/html/latest/process/submitting-patches.html).
+
+We previously used patchwork for development, but it is no longer used. I'd like
+to see patches that are still applicable turned into Pull Requests on GitHub.
+[Here](http://patchwork.ozlabs.org/project/crosstool-ng/) is the list of pending patches.

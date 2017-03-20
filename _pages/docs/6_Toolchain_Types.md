@@ -58,11 +58,43 @@ sure of this as “2 and 2 are 4”. Here is how they come into play:
     it on another machine, and will produce code to run on a third
     machine.
 
-**crosstool-NG** can build all these kinds of toolchains. (Or is aiming at it,
-anyway!)
-
-------------------
-¹   The term Canadian Cross came aboot because at the time that these
+    The term Canadian Cross was coined because at the time that these
     issues were all being hashed out, Canada had three national
     political parties
     [(per Wikipedia)](http://en.wikipedia.org/wiki/Cross_compiler#Canadian_Cross).
+
+**crosstool-NG** can build all these kinds of toolchains, or is aiming at it,
+anyway. There are a few caveats, though.
+
+While building a "native" toolchain, crosstool-ng will currently still
+compile new version of libc for the target. There is currently no way
+to use the system libc as a part of the toolchain. This may work if you
+choose a compatible version (i.e., the applications compiled with the toolchain
+will load the system libc).
+
+A "cross-native" toolchain can be built as a trivial case of the "canadian"
+toolchain. It is suboptimal, as it makes crosstool-NG build the tools
+targeting the host machine twice (first, as a separate toolchain which
+is a prerequisite for all canadian builds; and second, as a part of temporary
+toolchain created as a part of the canadian build itself). This will likely
+be improved in the future.
+
+To build a "canadian" toolchain, you must build a toolchain that runs on build
+and targets the host as a prerequisite (i.e., a simple cross). Then, add the
+`/bin` directory of this prerequisite to the `$PATH` environment variable and
+configure the canadian, specifying the target of the prerequisite toolchain
+as the host of the new toolchain.
+
+There are a few samples of canadian toolchains shipped with crosstool-NG. The
+names of the canadian samples consist of two comma-separated parts, i.e.
+`HOST,TARGET`. They require `HOST` sample as a prerequisiste. For example:
+
+    ct-ng x86_64-w64-mingw32
+    ct-ng build
+    PATH=~/x-tools/x86_64-w64-mingw32/bin:$PATH
+    ct-ng x86_64-w64-mingw32,x86_64-pc-linux-gnu
+    ct-ng build
+
+Note that you will not be able to run the binaries from the canadian toolchain
+on your build machine! You need to transfer them to a machine running the OS
+configured as the host.

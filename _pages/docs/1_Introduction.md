@@ -114,8 +114,8 @@ version number either as:
 -   `crosstool-ng-X.Y.Z` (long name in lowercase, a hyphen (dash),
     and the version string) -- this is used to name the release tarballs
 
--   `crosstool-ng-X.Y.Z+hg_id` (long name in lowercase, a hyphen,
-    the version string, and the Hg ID as returned by `ct-ng version`)
+-   `crosstool-ng-X.Y.Z+git_id` (long name in lowercase, a hyphen,
+    the version string, and the Git ID as returned by `ct-ng version`)
     -- this is used to differentiate between releases and snapshots
 
 The frontend to **crosstool-NG** is the command `ct-ng`:

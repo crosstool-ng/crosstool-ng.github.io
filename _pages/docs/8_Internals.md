@@ -221,7 +221,7 @@ for a quite complete example of what an actual architecture description
 looks like.
 
 
-Kernel specific
+Kernel specific <a name="kernel-in"></a>
 ---------------
 
 ### A kernel is defined by:
