@@ -29,17 +29,22 @@ First, download the tarball:
 
     wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-VERSION.tar.bz2
 
-Starting with 1.21.0, releases are signed with Bryan Hundven's pgp key. The
+Starting with 1.21.0, releases are signed with Bryan Hundven's PGP key. The
 fingerprint is:
 
     561E D9B6 2095 88ED 23C6 8329 CAD7 C8FC 35B8 71D1
 
-The public key is found on [http://pgp.surfnet.nl/](http://pgp.surfnet.nl/) with the
-fingerprint `35B871D1`. To validate the release tarball run you need to import
-the key from the keyserver and download the signature of the tarball, then
-verify the tarball with both the tarball and the signature in the same directory:
+Starting with 1.23.0, releases are signed with Alexey Neyman's PGP key. The
+fingerprint is:
 
-    gpg --keyserver http://pgp.surfnet.nl --recv-keys 35B871D1
+    64AA FBF2 1475 8C63 4093 45F9 7848 649B 11D6 18A4
+
+The public keys are found on [http://pgp.surfnet.nl/](http://pgp.surfnet.nl/).
+To validate the release tarball run you need to import the keys from the keyserver
+and download the signature of the tarball, then verify the tarball with both
+the tarball and the signature in the same directory:
+
+    gpg --keyserver http://pgp.surfnet.nl --recv-keys 35B871D1 11D618A4
     wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-VERSION.tar.bz2.sig
     gpg --verify crosstool-ng-VERSION.tar.bz2.sig
 
