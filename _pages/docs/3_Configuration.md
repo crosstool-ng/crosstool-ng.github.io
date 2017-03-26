@@ -143,5 +143,4 @@ Then, you can review and change the configuration by running:
 > crosstool-NG version. Perform `ct-ng oldconfig` prior to building the toolchain!
 > Otherwise, the options introduced in the new release will not be set to their
 > default values, and this will result in errors later on! If you cloned a Git
-> repository, you need to do `ct-ng oldconfig` each time you do a `git pull` or
-> `git fetch`.
+> repository, you need to do `ct-ng oldconfig` each time you do a `git pull`.

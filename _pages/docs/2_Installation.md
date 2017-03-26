@@ -4,7 +4,13 @@ title: Installing crosstool-NG
 permalink: /docs/install/
 ---
 
-There also two ways how you can obtain the crosstool-NG sources:
+Before installing crosstool-NG, you may need to install additional packages on
+the host OS.  Specific instructions for several supported operating systems and
+distributions are provided [here](/docs/tutorials/).  Note that not all the
+dependencies are currently detected by the `configure` script; missing some of
+them may later result in failing `ct-ng build`.
+
+There two ways how you can obtain the crosstool-NG sources:
 
 -   by [downloading a released tarball](#download-tarball);
 
@@ -15,11 +21,11 @@ There also are two ways you can use crosstool-NG:
 -   [build and install it](#install-method), then get rid of the sources like
     you’d do for most programs;
 
--   or only [build it and run from the source directory](#hackers-way).
+-   or [only build it and run from the source directory](#hackers-way).
 
 The typical workflow assumes using a released tarball and installing crosstool-NG.
 If you intend to do some development on crosstool-NG and/or submit patches,
-you'd likely want a clone of the repository.
+you'd likely want a clone of the repository and running from the source directory.
 
 
 Downloading a released tarball <a name="download-tarball"></a>
@@ -28,6 +34,10 @@ Downloading a released tarball <a name="download-tarball"></a>
 First, download the tarball:
 
     wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-VERSION.tar.bz2
+
+or
+
+    wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-VERSION.tar.xz
 
 Starting with 1.21.0, releases are signed with Bryan Hundven's PGP key. The
 fingerprint is:

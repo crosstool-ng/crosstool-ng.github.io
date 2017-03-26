@@ -68,9 +68,9 @@ anyway. There are a few caveats, though.
 
 While building a "native" toolchain, crosstool-ng will currently still
 compile new version of libc for the target. There is currently no way
-to use the system libc as a part of the toolchain. This may work if you
-choose a compatible version (i.e., the applications compiled with the toolchain
-will load the system libc).
+to use the system libc and/or system kernel headers as a part of
+the toolchain. This may work if you choose a compatible version (i.e.,
+the applications compiled with the toolchain will load the system libc).
 
 A "cross-native" toolchain can be built as a trivial case of the "canadian"
 toolchain. It is suboptimal, as it makes crosstool-NG build the tools
