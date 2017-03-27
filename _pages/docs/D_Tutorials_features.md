@@ -34,6 +34,17 @@ of the uClibc with the target components built afterwards. This also allows
 the user to share the same base configuration file for uClibc and tweak it
 for different targets using crosstool-NG configuration.
 
+uClibc with newer GCC
+---------------------
+
+uClibc (not uClibc-ng) produces invalid binaries when compiled with GCC5
+or newer (noticed at least on the i686 architecture); applications
+segfault while starting up when run against the resulting libraries.
+Use GCC 4.9 or 4.8 when compiling a uClibc based toolchain.
+
+Given that uClibc is essentially unmaintained, this is unlikely to get
+ever fixed.
+
 Multilib caveats
 ----------------
 

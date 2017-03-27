@@ -4,8 +4,6 @@ title: Known issues
 permalink: /docs/known-issues/
 ---
 
-This section may be outdated. It will be updated after the 1.23 release.
-
 This files lists the known issues encountered while developing crosstool-NG,
 but that could not be addressed before the release.
 
