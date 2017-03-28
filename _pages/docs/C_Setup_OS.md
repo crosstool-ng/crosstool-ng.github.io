@@ -34,7 +34,11 @@ export MENUCONFIG_COLOR=mono
 Linux: CentOS
 -------------
 
-TBD
+The following packages need to be installed on CentOS 7:
+````
+yum install autoconf gperf bison flex texinfo help2man gcc-c++ patch \
+	ncurses-devel python-devel perl-Thread-Queue bzip2 git
+````
 
 Linux: Fedora Core
 ------------------
@@ -42,7 +46,7 @@ Linux: Fedora Core
 The following packages need to be installed on Fedora Core 25:
 ````
 dnf install autoconf gperf bison flex texinfo help2man gcc-c++ patch \
-	ncurses-devel python-devel perl-Thread-Queue
+	ncurses-devel python-devel perl-Thread-Queue git
 ````
 
 Linux: Gentoo
