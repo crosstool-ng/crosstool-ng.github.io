@@ -23,7 +23,7 @@ Make sure that the report includes the following:
 
 If crosstool-NG breaks during the `ct-ng build` phase, please retry using a
 `ct-ng build.1` command. If it also fails, please attach the `build.log` from 
-ct-ng build.1` run (this command forces a non-parallel build, so the build takes
+`ct-ng build.1` run (this command forces a non-parallel build, so the build takes
 longer but the log file is much easier to read). If `ct-ng build` fails but
 `ct-ng build.1` succeeds, please attach *both* `build.log` files.
 
