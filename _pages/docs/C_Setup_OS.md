@@ -15,7 +15,7 @@ be checked out from a Git repository).
 If on the other hand you encounter a dependency not listed here, please let us
 know over the mailing list or via a pull request!
 
-Linux: ArhcLinux
+Linux: ArchLinux
 ----------------
 
 The following packages are needed for crosstool-NG (assuming `pacstrap ... base base-devel`
