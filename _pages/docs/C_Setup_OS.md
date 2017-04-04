@@ -52,7 +52,10 @@ dnf install autoconf gperf bison flex texinfo help2man gcc-c++ patch \
 Linux: Gentoo
 -------------
 
-TBD
+The following packages need to be installed after installing a minimal profile:
+````
+emerge dev-vcs/git
+````
 
 Linux: Ubuntu
 -------------
@@ -106,16 +109,6 @@ clang: error: no input files
 2. `ct-ng menuconfig` will not work on Snow Leopard 10.6.3 since libncurses
    is broken with this release. MacOS <= 10.6.2 and >= 10.6.4 are ok.
 
-<!-- TBD test -->
-HINTS:
-- Apparently, GNU make's builtin variable `.LIBPATTERNS` is misconfigured
-  under MacOS: It does not include `lib%.dylib`.
-  This affects build of (at least) gdb-7.1
-  Put `lib%.a lib%.so lib%.dylib` as `.LIBPATTERNS` into your environment
-  before executing `ct-ng build`.
-  See [here](http://www.gnu.org/software/make/manual/html_node/Libraries_002fSearch.html)
-  for details.
-
 > **Previous version of the installation guidelines**
 >
 > Crosstool-NG has been reported to work with MacPorts as well, using the following set
@@ -138,6 +131,18 @@ HINTS:
 > Explanation: `llvm-gcc-4.2` (with Xcode 4.1 it is on my machine
 > "gcc version 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2335.15.00)")
 > cannot boostrap gcc. See [this bug](http://llvm.org/bugs/show_bug.cgi?id=9571)
+>
+> Apparently, GNU make's builtin variable `.LIBPATTERNS` is misconfigured
+> under MacOS: It does not include `lib%.dylib`.
+> This affects build of (at least) GDB 7.1
+> Put `lib%.a lib%.so lib%.dylib` as `.LIBPATTERNS` into your environment
+> before executing `ct-ng build`.
+> See [here](http://www.gnu.org/software/make/manual/html_node/Libraries_002fSearch.html)
+> for details.
+>
+> Note however, that GDB 7.1 (and anything earlier than 7.10) are known
+> to fail to build on macOS.
+
 
 Windows: Cygwin
 ---------------
@@ -205,36 +210,67 @@ MinGW-w64 as host.
 FreeBSD (and other BSD)
 -----------------------
 
-<!-- TBD setup and verify -->
-
-*Contributed by: Titus von Boxberg*
-
 FreeBSD support is currently experimental in crosstool-NG.
 
-Prerequisites and instructions for using ct-ng for building a cross toolchain on FreeBSD as host.
+FreeBSD does not provide a `gcc` command by default. Crosstool-NG and many of the packages
+used expect this by default. A comprehensive fix for various ways of setting up the OS
+is planned after the 1.23 release. Until then, setting up the following packages is
+recommended as a prerequisite for crosstool-NG:
 
-0. Tested on FreeBSD 8.0
+- `archivers/zip`
+- `devel/automake`
+- `devel/bison`
+- `devel/gettext-tools`
+- `devel/git`
+- `devel/gmake`
+- `devel/gperf`
+- `devel/libatomic_ops`
+- `devel/libtool`
+- `devel/patch`
+- `lang/gcc6`
+- `lang/gawk`
+- `misc/help2man`
+- `print/texinfo`
+- `textproc/asciidoc`
+- `textproc/gsed`
+- `textproc/xmlto`
 
-1. Install (at least) the following ports
-   archivers/lzma
-   textproc/gsed
-   devel/gmake
-   devel/patch
-   shells/bash
-   devel/bison
-   lang/gawk
-   devel/automake110
-   ftp/wget
-
-   Of course, you should have /usr/local/bin in your PATH.
-
-2. run ct-ng's configure with the following tool configuration:
+Use any supported method of installation, e.g.:
 ````
-./configure --with-sed=/usr/local/bin/gsed \
-      --with-make=/usr/local/bin/gmake \
-      --with-patch=/usr/local/bin/gpatch
-   [...other configure parameters as you like...]
+cd /usr/ports/lang/gcc6
+make install clean
 ````
 
-3. proceed as described in general documentation
-   but use gmake instead of make
+Even with these packages installed, some of the samples are failing to build. YMMV.
+
+> **Previous version of the installation guidelines**
+>
+> *Contributed by: Titus von Boxberg*
+>
+> Prerequisites and instructions for using ct-ng for building a cross toolchain on FreeBSD as host.
+>
+> 0. Tested on FreeBSD 8.0
+>
+> 1. Install (at least) the following ports
+>    archivers/lzma
+>    textproc/gsed
+>    devel/gmake
+>    devel/patch
+>    shells/bash
+>    devel/bison
+>    lang/gawk
+>    devel/automake110
+>    ftp/wget
+>
+>    Of course, you should have /usr/local/bin in your PATH.
+>
+> 2. run ct-ng's configure with the following tool configuration:
+> ````
+> ./configure --with-sed=/usr/local/bin/gsed \
+>       --with-make=/usr/local/bin/gmake \
+>       --with-patch=/usr/local/bin/gpatch
+>    [...other configure parameters as you like...]
+> ````
+>
+> 3. proceed as described in general documentation
+>   but use gmake instead of make
