@@ -10,7 +10,7 @@ Getting a released version
 
 Released versions are available for download [here](http://crosstool-ng.org/download/crosstool-ng/).
 The latest stable release is [1.22.0](http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.22.0.tar.xz).
-The latest release candidate is [1.23.0.rc1](http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.23.0.rc1.tar.xz).
+The latest release candidate is [1.23.0.rc2](http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.23.0.rc2.tar.xz).
 
 Getting the latest development version
 --------------------------------------
