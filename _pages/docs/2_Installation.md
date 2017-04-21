@@ -6,7 +6,7 @@ permalink: /docs/install/
 
 Before installing crosstool-NG, you may need to install additional packages on
 the host OS.  Specific instructions for several supported operating systems and
-distributions are provided [here](/docs/tutorials/).  Note that not all the
+distributions are provided [here](/docs/os-setup/).  Note that not all the
 dependencies are currently detected by the `configure` script; missing some of
 them may later result in failing `ct-ng build`.
 
