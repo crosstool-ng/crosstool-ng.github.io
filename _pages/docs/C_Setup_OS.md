@@ -92,6 +92,13 @@ and with Mac OS X Leopard (10.5) with Developer Tools + GCC 4.3 or newer install
    If you prefer to use MacPorts, refer to the previous version of the instruction below
    and let us know if it works with current crosstool-NG and macOS releases.
 
+3. Mac OS X defaults to a fairly low limit on the number of the files that can be opened by
+   a process (256) that is exceeded by the build framework of the GNU C library. Increase this
+   limit to 1024:
+   ````
+ulimit -n 1024
+   ````
+
 **Notes:**
 
 1. When building on macOS, the following message may be displayed:
