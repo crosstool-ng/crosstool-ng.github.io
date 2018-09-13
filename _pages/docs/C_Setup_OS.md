@@ -64,7 +64,7 @@ The following packages need to be installed on Ubuntu 16.04.2 (server):
 
 ````
 apt-get install gcc gperf bison flex texinfo help2man make libncurses5-dev \
-	python-dev
+	python-dev libtool-bin
 ````
 
 macOS (a.k.a Mac OS X, OS X)
