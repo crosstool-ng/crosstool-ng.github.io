@@ -53,7 +53,7 @@ which are not really scalable. Examples are:
     template and restore it later, or restart again from scratch. This is not
     convenient.
 
--   [ptxdist](http://www.ptxdist.org/software/ptxdist/index_en.html), whose
+-   [ptxdist](http://www.ptxdist.org/), whose
     purpose is very similar to buildroot.
 
 -   Other projects (e.g., [openembedded.org](http://www.openembedded.org/)),
