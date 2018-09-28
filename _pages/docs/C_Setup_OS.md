@@ -57,6 +57,15 @@ The following packages need to be installed after installing a minimal profile:
 emerge dev-vcs/git
 ````
 
+Linux: Mint
+-----------
+
+The following packages need to be installed:
+````
+apt-get install -y gcc gperf bison flex texinfo help2man make libncurses5-dev \
+    python-dev autoconf automake libtool libtool-bin gawk
+````
+
 Linux: Ubuntu
 -------------
 
@@ -115,6 +124,11 @@ clang: error: no input files
 
 2. `ct-ng menuconfig` will not work on Snow Leopard 10.6.3 since libncurses
    is broken with this release. MacOS <= 10.6.2 and >= 10.6.4 are ok.
+
+3. APFS filesystem is known to have some random issues with parallel build of GCC.
+   See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81797 for details. Don't use APFS,
+   or turn off the parallel build in crosstool-NG (setting the number of parallel jobs
+   to 1 in the confiuguration.
 
 > **Previous version of the installation guidelines**
 >
