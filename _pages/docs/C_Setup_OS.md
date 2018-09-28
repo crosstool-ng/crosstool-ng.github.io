@@ -126,9 +126,9 @@ clang: error: no input files
    is broken with this release. MacOS <= 10.6.2 and >= 10.6.4 are ok.
 
 3. APFS filesystem is known to have some random issues with parallel build of GCC.
-   See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81797 for details. Don't use APFS,
-   or turn off the parallel build in crosstool-NG (setting the number of parallel jobs
-   to 1 in the confiuguration.
+   See [this bug report](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81797) for
+   details. Don't use APFS, or turn off the parallel build in crosstool-NG (setting
+   the number of parallel jobs to 1 in the confiuguration) as a workaround.
 
 > **Previous version of the installation guidelines**
 >
@@ -206,6 +206,7 @@ MinGW-w64 as host.
    - texinfo
    - wget
    - xz
+
    Leave "Select required packages (RECOMMENDED)" ticked.
 
    Notes:
