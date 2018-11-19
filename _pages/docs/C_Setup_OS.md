@@ -69,11 +69,11 @@ apt-get install -y gcc gperf bison flex texinfo help2man make libncurses5-dev \
 Linux: Ubuntu
 -------------
 
-The following packages need to be installed on Ubuntu 16.04.2 (server):
+The following packages need to be installed on Ubuntu 18.04:
 
 ````
 apt-get install gcc gperf bison flex texinfo help2man make libncurses5-dev \
-	python-dev libtool-bin
+	python-dev libtool-bin autoconf gawk
 ````
 
 macOS (a.k.a Mac OS X, OS X)
