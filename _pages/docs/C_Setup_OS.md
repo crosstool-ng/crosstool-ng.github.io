@@ -12,158 +12,16 @@ packages. For example, `git` is needed if your configuration is for an uClinux-b
 target which requires `elf2flt` utilities (which does "rolling releases" and must
 be checked out from a Git repository).
 
-If on the other hand you encounter a dependency not listed here, please let us
+Linux
+-----
+
+Sample configurations for supported Linux distributions are available as Docker
+configuration files in the `testing` directory. You can use the contents of
+these files as a list of the packages that need to be installed on a particular
+distribution.
+
+If on the other hand you encounter a dependency not listed there, please let us
 know over the mailing list or via a pull request!
-
-Linux: ArchLinux
-----------------
-
-The following packages are needed for crosstool-NG (assuming `pacstrap ... base base-devel`
-and `pacman -S grub os-prober` were performed during installation): `git help2man python gperf`.
-Install them with `pacman -S PACKAGES`.
-
-**Notes**
-
-1. The default color scheme used by Kconfig on ArchLinux makes the active menu selection
-   hard to see. A workaround for this issue is to put the following line into your shell's
-   profile (e.g. `~/.bash_profile` or `~/.bashrc` for bash):
-````
-export MENUCONFIG_COLOR=mono
-````
-
-Linux: CentOS
--------------
-
-The following packages need to be installed on CentOS 7:
-````
-yum install autoconf gperf bison flex texinfo help2man gcc-c++ patch \
-	ncurses-devel python-devel perl-Thread-Queue bzip2 git
-````
-
-Linux: Fedora Core
-------------------
-
-The following packages need to be installed on Fedora Core 25:
-````
-dnf install autoconf gperf bison flex texinfo help2man gcc-c++ patch \
-	ncurses-devel python-devel perl-Thread-Queue git
-````
-
-Linux: Gentoo
--------------
-
-The following packages need to be installed after installing a minimal profile:
-````
-emerge dev-vcs/git
-````
-
-Linux: Mint
------------
-
-The following packages need to be installed:
-````
-apt-get install -y gcc gperf bison flex texinfo help2man make libncurses5-dev \
-    python-dev autoconf automake libtool libtool-bin gawk
-````
-
-Linux: Ubuntu
--------------
-
-The following packages need to be installed on Ubuntu 16.04.2 (server):
-
-````
-apt-get install gcc gperf bison flex texinfo help2man make libncurses5-dev \
-	python-dev libtool-bin
-````
-
-macOS (a.k.a Mac OS X, OS X)
-----------------------------
-
-*Originally contributed by: Titus von Boxberg*
-
-The instructions below have been verified on macOS Sierra (10.12). They have been previously
-reported to work with versions since Mac OS X Snow Leopard (10.6) with Developer Tools 3.2,
-and with Mac OS X Leopard (10.5) with Developer Tools + GCC 4.3 or newer installed via MacPorts.
-
-1. You have to use a case sensitive file system for crosstool-NG's build and target
-   directories. Use a disk or disk image with a case sensitive FS that you
-   mount somewhere.
-
-2. Install required tools via HomeBrew. The following set is sufficient for
-   HomeBrew: `autoconf binutils gawk gmp gnu-sed help2man mpfr openssl pcre readline wget xz`.
-   Install them using `brew install PACKAGE` command.
-
-   Also, installing `homebrew/dupes/grep` is recommended. It has been noticed that GNU libc
-   was misconfigured due to a subtle difference between BSD grep (which is used by macOS) and
-   GNU grep. This has since been fixed, but other scripts in various packages may still contain
-   GNUisms.
-
-   If you prefer to use MacPorts, refer to the previous version of the instruction below
-   and let us know if it works with current crosstool-NG and macOS releases.
-
-3. Mac OS X defaults to a fairly low limit on the number of the files that can be opened by
-   a process (256) that is exceeded by the build framework of the GNU C library. Increase this
-   limit to 1024:
-   ````
-ulimit -n 1024
-   ````
-
-**Notes:**
-
-1. When building on macOS, the following message may be displayed:
-
-   ````
-clang: error: unsupported option '-print-multi-os-directory'
-clang: error: no input files
-   ````
-
-   It is reported when the host version of `libiberty` (from GCC) is compiled by macOS
-   default compiler, `clang`. In absense of any reported multilib information, `libiberty`
-   is then configured with the default compilation flags. This does not seem to affect
-   the resulting toolchain.
-
-2. `ct-ng menuconfig` will not work on Snow Leopard 10.6.3 since libncurses
-   is broken with this release. MacOS <= 10.6.2 and >= 10.6.4 are ok.
-
-3. APFS filesystem is known to have some random issues with parallel build of GCC.
-   See [this bug report](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81797) for
-   details. Don't use APFS, or turn off the parallel build in crosstool-NG (setting
-   the number of parallel jobs to 1 in the confiuguration) as a workaround.
-
-> **Previous version of the installation guidelines**
->
-> Crosstool-NG has been reported to work with MacPorts as well, using the following set
-> of ports: `lzmautils libtool binutils gsed gawk`. On Mac OS X Leopard, it is also required
-> to install `gcc43` and `gcc_select`.
->
-> On Leopard, make sure that the MacPort's `gcc` is called with the default commands
-> (`gcc`, `g++`,...), via MacPort's `gcc_select`.
->
-> On OSX 10.7 Lion / when using Xcode >= 4 make sure that the default commands
-> `gcc`, `g++`, etc.) point to `gcc-4.2`, NOT `llvm-gcc-4.2`
-> by using MacPort's `gcc_select` feature. With MacPorts >= 1.9.2
-> the command is: "sudo port select --set gcc gcc42"
->
-> This also requires (like written above) that macport's `bin` directory
-> comes before the standard directories in your `PATH` environment variable
-> because the `gcc` symlink is installed in `/opt/local/bin` and the default `/usr/bin/gcc`
-> is not removed by the `gcc_select` command!
->
-> Explanation: `llvm-gcc-4.2` (with Xcode 4.1 it is on my machine
-> "gcc version 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2335.15.00)")
-> cannot boostrap gcc. See [this bug](http://llvm.org/bugs/show_bug.cgi?id=9571)
->
-> Apparently, GNU make's builtin variable `.LIBPATTERNS` is misconfigured
-> under MacOS: It does not include `lib%.dylib`.
-> This affects build of (at least) GDB 7.1
-> Put `lib%.a lib%.so lib%.dylib` as `.LIBPATTERNS` into your environment
-> before executing `ct-ng build`.
-> See [here](http://www.gnu.org/software/make/manual/html_node/Libraries_002fSearch.html)
-> for details.
->
-> Note however, that GDB 7.1 (and anything earlier than 7.10) are known
-> to fail to build on macOS.
-
 
 Windows: Cygwin
 ---------------
@@ -296,3 +154,97 @@ Even with these packages installed, some of the samples are failing to build. YM
 >
 > 3. proceed as described in general documentation
 >   but use gmake instead of make
+
+
+macOS (a.k.a Mac OS X, OS X)
+----------------------------
+
+**Note** macOS is no longer officially supported by crosstool-NG. If the instructions
+below work for you, congratulations. If they kill your cat, ye be warned.
+
+*Originally contributed by: Titus von Boxberg*
+
+The instructions below have been verified on macOS Sierra (10.12). They have been previously
+reported to work with versions since Mac OS X Snow Leopard (10.6) with Developer Tools 3.2,
+and with Mac OS X Leopard (10.5) with Developer Tools + GCC 4.3 or newer installed via MacPorts.
+
+1. You have to use a case sensitive file system for crosstool-NG's build and target
+   directories. Use a disk or disk image with a case sensitive FS that you
+   mount somewhere.
+
+2. Install required tools via HomeBrew. The following set is sufficient for
+   HomeBrew: `autoconf binutils gawk gmp gnu-sed help2man mpfr openssl pcre readline wget xz`.
+   Install them using `brew install PACKAGE` command.
+
+   Also, installing `homebrew/dupes/grep` is recommended. It has been noticed that GNU libc
+   was misconfigured due to a subtle difference between BSD grep (which is used by macOS) and
+   GNU grep. This has since been fixed, but other scripts in various packages may still contain
+   GNUisms.
+
+   If you prefer to use MacPorts, refer to the previous version of the instruction below
+   and let us know if it works with current crosstool-NG and macOS releases.
+
+3. Mac OS X defaults to a fairly low limit on the number of the files that can be opened by
+   a process (256) that is exceeded by the build framework of the GNU C library. Increase this
+   limit to 1024:
+   ````
+ulimit -n 1024
+   ````
+
+**Notes:**
+
+1. When building on macOS, the following message may be displayed:
+
+   ````
+clang: error: unsupported option '-print-multi-os-directory'
+clang: error: no input files
+   ````
+
+   It is reported when the host version of `libiberty` (from GCC) is compiled by macOS
+   default compiler, `clang`. In absense of any reported multilib information, `libiberty`
+   is then configured with the default compilation flags. This does not seem to affect
+   the resulting toolchain.
+
+2. `ct-ng menuconfig` will not work on Snow Leopard 10.6.3 since libncurses
+   is broken with this release. MacOS <= 10.6.2 and >= 10.6.4 are ok.
+
+3. APFS filesystem is known to have some random issues with parallel build of GCC.
+   See [this bug report](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81797) for
+   details. Don't use APFS, or turn off the parallel build in crosstool-NG (setting
+   the number of parallel jobs to 1 in the confiuguration) as a workaround.
+
+> **Previous version of the installation guidelines**
+>
+> Crosstool-NG has been reported to work with MacPorts as well, using the following set
+> of ports: `lzmautils libtool binutils gsed gawk`. On Mac OS X Leopard, it is also required
+> to install `gcc43` and `gcc_select`.
+>
+> On Leopard, make sure that the MacPort's `gcc` is called with the default commands
+> (`gcc`, `g++`,...), via MacPort's `gcc_select`.
+>
+> On OSX 10.7 Lion / when using Xcode >= 4 make sure that the default commands
+> `gcc`, `g++`, etc.) point to `gcc-4.2`, NOT `llvm-gcc-4.2`
+> by using MacPort's `gcc_select` feature. With MacPorts >= 1.9.2
+> the command is: "sudo port select --set gcc gcc42"
+>
+> This also requires (like written above) that macport's `bin` directory
+> comes before the standard directories in your `PATH` environment variable
+> because the `gcc` symlink is installed in `/opt/local/bin` and the default `/usr/bin/gcc`
+> is not removed by the `gcc_select` command!
+>
+> Explanation: `llvm-gcc-4.2` (with Xcode 4.1 it is on my machine
+> "gcc version 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2335.15.00)")
+> cannot boostrap gcc. See [this bug](http://llvm.org/bugs/show_bug.cgi?id=9571)
+>
+> Apparently, GNU make's builtin variable `.LIBPATTERNS` is misconfigured
+> under MacOS: It does not include `lib%.dylib`.
+> This affects build of (at least) GDB 7.1
+> Put `lib%.a lib%.so lib%.dylib` as `.LIBPATTERNS` into your environment
+> before executing `ct-ng build`.
+> See [here](http://www.gnu.org/software/make/manual/html_node/Libraries_002fSearch.html)
+> for details.
+>
+> Note however, that GDB 7.1 (and anything earlier than 7.10) are known
+> to fail to build on macOS.
+
+
