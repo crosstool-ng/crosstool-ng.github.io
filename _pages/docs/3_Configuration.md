@@ -138,9 +138,22 @@ Then, you can review and change the configuration by running:
     ct-ng menuconfig
 
 > **Note**
-> 
-> The same procedure applies to rebuilding the toolchain with a newer
-> crosstool-NG version. Perform `ct-ng oldconfig` prior to building the toolchain!
-> Otherwise, the options introduced in the new release will not be set to their
-> default values, and this will result in errors later on! If you cloned a Git
-> repository, you need to do `ct-ng oldconfig` each time you do a `git pull`.
+>
+> This procedure applies to rebuilding the toolchain using same version of
+> crosstool-NG.
+
+Upgrading from a previous crosstool-NG configuration
+----------------------------------------------------
+
+Before the 1.24.0 release of crosstool-NG, there was no specific upgrade
+procedure. The procedure described in the previous section worked in some
+cases; it didn't handle the upgrades when some options were removed or
+renamed. This particularly affects the selected versions of various
+toolchain components; so, after running the `ct-ng oldconfig` (or
+`ct-ng olddefconfig`) you must verify all the settings.
+
+Starting with the 1.24.0 version of crosstool-NG, a new command has
+been introduced, `ct-ng upgradeconfig`. It can upgrade the configurations
+from the 1.23.0 version; upgrading from versions in between 1.23.0 and 1.24.0
+is not supported. It is expected that after the 1.24.0 release even the
+interim unreleased versions will be upgradable using the same command.
