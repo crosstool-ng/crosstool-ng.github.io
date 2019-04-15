@@ -71,7 +71,7 @@ Interesting config options
     directory, enter it here. That will speed up the retrieving phase,
     where crosstool-NG would otherwise download those tarballs.
 
--   `CT_PREFIX_DIR`: This is where the toolchain will be installed in
+-   `CT_PREFIX`: This is where the toolchain will be installed in
     (and for now, where it will run from). Common use is to add the
     target tuple in the directory path, such as (see above):
     `/opt/x-tools/${CT_TARGET}`.
