@@ -7,7 +7,7 @@ url: 'http://crosstool-ng.github.com' # the base hostname & protocol for your si
 github_username: crosstool-ng
 license_url: https://raw.githubusercontent.com/crosstool-ng/crosstool-ng/master/COPYING
 mailinglist_url: https://sourceware.org/ml/crossgcc/
-irc_url: irc://irc.freenode.net/#crosstool-ng
+irc_url: irc://irc.libera.chat/#crosstool-ng
 download_url: http://crosstool-ng.org/download/crosstool-ng/
 
 # Build settings

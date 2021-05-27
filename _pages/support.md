@@ -37,7 +37,7 @@ Archive and subscription info can be found here:
 
 ## International Relay Chat (IRC)
 
-Use channel #crosstool-ng on FreeNode (irc.freenode.net)
+Use channel #crosstool-ng on Libera.Chat (irc.libera.chat)
 
 ## Deprecation policy
 
