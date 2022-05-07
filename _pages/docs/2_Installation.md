@@ -49,6 +49,11 @@ fingerprint is:
 
     64AA FBF2 1475 8C63 4093 45F9 7848 649B 11D6 18A4
 
+Starting with 1.25.0, releases are signature with Chris Packham's PGP key. The
+fingerprint is:
+
+    721B 0FB1 CDC8 318A EBB8  88B8 09F6 DD5F 1F30 EF2E
+
 The public keys are found on [http://pgp.surfnet.nl/](http://pgp.surfnet.nl/).
 To validate the release tarball run you need to import the keys from the keyserver
 and download the signature of the tarball, then verify the tarball with both
