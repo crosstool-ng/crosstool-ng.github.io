@@ -59,7 +59,7 @@ To validate the release tarball run you need to import the keys from the keyserv
 and download the signature of the tarball, then verify the tarball with both
 the tarball and the signature in the same directory:
 
-    gpg --keyserver http://pgp.surfnet.nl --recv-keys 35B871D1 11D618A4
+    gpg --keyserver pgp.surfnet.nl --recv-keys 35B871D1 11D618A4
     wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-VERSION.tar.bz2.sig
     gpg --verify crosstool-ng-VERSION.tar.bz2.sig
 
