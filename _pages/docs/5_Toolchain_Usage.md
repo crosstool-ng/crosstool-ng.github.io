@@ -106,7 +106,7 @@ There are four schools of thought here:
               /path/to/staging
         $ ./configure --build=<build tuple> --host=<host tuple>          \
                       --prefix=/usr --enable-foo-bar...                  \
-                      CC="<host tuple>-gcc --syroot=/path/to/staging"    \
+                      CC="<host tuple>-gcc --sysroot=/path/to/staging"    \
                       CXX="<host tuple>-g++ --sysroot=/path/to/staging"  \
                       LD="<host tuple>-ld --sysroot=/path/to/staging"    \
                       AND_SO_ON="tuple-andsoon --sysroot=/path/to/staging"
