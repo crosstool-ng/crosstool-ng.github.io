@@ -159,92 +159,72 @@ Even with these packages installed, some of the samples are failing to build. YM
 macOS (a.k.a Mac OS X, OS X)
 ----------------------------
 
-**Note** macOS is no longer officially supported by crosstool-NG. If the instructions
-below work for you, congratulations. If they kill your cat, ye be warned.
-
 *Originally contributed by: Titus von Boxberg*
+*Updates by: Bryan Hundven*
 
-The instructions below have been verified on macOS Sierra (10.12). They have been previously
-reported to work with versions since Mac OS X Snow Leopard (10.6) with Developer Tools 3.2,
-and with Mac OS X Leopard (10.5) with Developer Tools + GCC 4.3 or newer installed via MacPorts.
+These instructions have been tested on macOS Sonoma (14.3.1). I have not tested
+on any other version with the following commands. *YMMV*
+Currently we only support [homebrew](brew.sh).
+Type any one of these commands: `git`, `clang`, or `gcc` in a terminal, and it
+will prompt you to install the Xcode Command Line Tools.
+Follow the instructions on the [homebrew](brew.sh) website to get homebrew
+installed.
+Run `brew doctor` to make sure everything is setup properly. If you have any
+problems, please refer to the [homebrew](brew.sh) website.
 
-1. You have to use a case sensitive file system for crosstool-NG's build and target
+1. Install the following packages:
+   ```
+autoconf automake bash binutils bison gawk git gnu-sed gnu-tar gettext help2man make ncurses readline wget xz zstd
+   ```
+   Then append the following to your shell's profile script (`~/.profile` or
+   `~/.zprofile`):
+   ```
+BREW_PREFIX="$(brew --prefix)"
+
+PATH=${PATH}:${BREW_PREFIX}/opt/binutils/bin"
+PATH=${BREW_PREFIX}/opt/bison/bin:${PATH}"
+PATH=/Volumes/crosstool-ng/bin:${PATH}"
+export PATH
+
+LDFLAGS="-L${BREW_PREFIX}/opt/binutils/lib"
+LDFLAGS+=" -L${BREW_PREFIX}/opt/bison/lib"
+LDFLAGS+=" -L${BREW_PREFIX}/opt/ncurses/lib"
+export LDFLAGS
+
+CPPFLAGS="-I${BREW_PREFIX}/opt/binutils/include"
+CPPFLAGS+=" -I${BREW_PREFIX}/opt/ncurses/include"
+export CPPFLAGS
+
+export PKG_CONFIG_PATH="${BREW_PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}"
+   ```
+
+2. You have to use a case sensitive file system for crosstool-NG's build and target
    directories. Use a disk or disk image with a case sensitive FS that you
    mount somewhere.
+   ```
+cd $HOME
+hdiutil create -size 40g -fs "Case-sensitive APFS" -type SPARSE -volname crosstool-ng crosstool-ng
+   ```
+   This will create `crosstool-ng.sparseimage`. You can mount it by typing:
+   ```
+cd $HOME
+hdiutil mount crosstool-ng.sparseimage
+   ```
+   And unmount it by typing:
+   ```
+hdiutil unmount /Volumes/crosstool-ng
+   ```
 
-2. Install required tools via HomeBrew. The following set is sufficient for
-   HomeBrew: `autoconf binutils gawk gmp gnu-sed help2man mpfr openssl pcre readline wget xz`.
-   Install them using `brew install PACKAGE` command.
+3. You can now build crosstool-ng on that volume by cloning the git repo or
+   untaring a release in `/Volumes/crosstool-ng` and bootstrapping (only if from
+   git) and configuring and building crosstool-ng.
+   ```
+./bootstrap # again, only needed if you got the source from git
+./configure --prefix=/Volumes/crosstool-ng
+make
+make install
+   ```
+   Close your terminal app and open it again to get a new shell and verify your
+   enviornment variables are set with `env`.
 
-   Also, installing `homebrew/dupes/grep` is recommended. It has been noticed that GNU libc
-   was misconfigured due to a subtle difference between BSD grep (which is used by macOS) and
-   GNU grep. This has since been fixed, but other scripts in various packages may still contain
-   GNUisms.
-
-   If you prefer to use MacPorts, refer to the previous version of the instruction below
-   and let us know if it works with current crosstool-NG and macOS releases.
-
-3. Mac OS X defaults to a fairly low limit on the number of the files that can be opened by
-   a process (256) that is exceeded by the build framework of the GNU C library. Increase this
-   limit to 1024:
-   ````
-ulimit -n 1024
-   ````
-
-**Notes:**
-
-1. When building on macOS, the following message may be displayed:
-
-   ````
-clang: error: unsupported option '-print-multi-os-directory'
-clang: error: no input files
-   ````
-
-   It is reported when the host version of `libiberty` (from GCC) is compiled by macOS
-   default compiler, `clang`. In absense of any reported multilib information, `libiberty`
-   is then configured with the default compilation flags. This does not seem to affect
-   the resulting toolchain.
-
-2. `ct-ng menuconfig` will not work on Snow Leopard 10.6.3 since libncurses
-   is broken with this release. MacOS <= 10.6.2 and >= 10.6.4 are ok.
-
-3. APFS filesystem is known to have some random issues with parallel build of GCC.
-   See [this bug report](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81797) for
-   details. Don't use APFS, or turn off the parallel build in crosstool-NG (setting
-   the number of parallel jobs to 1 in the confiuguration) as a workaround.
-
-> **Previous version of the installation guidelines**
->
-> Crosstool-NG has been reported to work with MacPorts as well, using the following set
-> of ports: `lzmautils libtool binutils gsed gawk`. On Mac OS X Leopard, it is also required
-> to install `gcc43` and `gcc_select`.
->
-> On Leopard, make sure that the MacPort's `gcc` is called with the default commands
-> (`gcc`, `g++`,...), via MacPort's `gcc_select`.
->
-> On OSX 10.7 Lion / when using Xcode >= 4 make sure that the default commands
-> `gcc`, `g++`, etc.) point to `gcc-4.2`, NOT `llvm-gcc-4.2`
-> by using MacPort's `gcc_select` feature. With MacPorts >= 1.9.2
-> the command is: "sudo port select --set gcc gcc42"
->
-> This also requires (like written above) that macport's `bin` directory
-> comes before the standard directories in your `PATH` environment variable
-> because the `gcc` symlink is installed in `/opt/local/bin` and the default `/usr/bin/gcc`
-> is not removed by the `gcc_select` command!
->
-> Explanation: `llvm-gcc-4.2` (with Xcode 4.1 it is on my machine
-> "gcc version 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2335.15.00)")
-> cannot boostrap gcc. See [this bug](http://llvm.org/bugs/show_bug.cgi?id=9571)
->
-> Apparently, GNU make's builtin variable `.LIBPATTERNS` is misconfigured
-> under MacOS: It does not include `lib%.dylib`.
-> This affects build of (at least) GDB 7.1
-> Put `lib%.a lib%.so lib%.dylib` as `.LIBPATTERNS` into your environment
-> before executing `ct-ng build`.
-> See [here](http://www.gnu.org/software/make/manual/html_node/Libraries_002fSearch.html)
-> for details.
->
-> Note however, that GDB 7.1 (and anything earlier than 7.10) are known
-> to fail to build on macOS.
-
-
+You should now be able to make a directory under `/Volumes/crosstool-ng` to build a toolchain in.
