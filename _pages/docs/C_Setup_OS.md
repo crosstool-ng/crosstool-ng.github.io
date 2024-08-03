@@ -173,12 +173,12 @@ Run `brew doctor` to make sure everything is setup properly. If you have any
 problems, please refer to the [homebrew](brew.sh) website.
 
 1. Install the following packages:
-   ```
+```
 autoconf automake bash binutils bison gawk git gnu-sed gnu-tar gettext help2man make ncurses readline wget xz zstd
-   ```
+```
    Then append the following to your shell's profile script (`~/.profile` or
    `~/.zprofile`):
-   ```
+```
 BREW_PREFIX="$(brew --prefix)"
 
 PATH=${PATH}:${BREW_PREFIX}/opt/binutils/bin"
@@ -196,34 +196,34 @@ CPPFLAGS+=" -I${BREW_PREFIX}/opt/ncurses/include"
 export CPPFLAGS
 
 export PKG_CONFIG_PATH="${BREW_PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}"
-   ```
+```
 
 2. You have to use a case sensitive file system for crosstool-NG's build and target
    directories. Use a disk or disk image with a case sensitive FS that you
    mount somewhere.
-   ```
+```
 cd $HOME
 hdiutil create -size 40g -fs "Case-sensitive APFS" -type SPARSE -volname crosstool-ng crosstool-ng
-   ```
+```
    This will create `crosstool-ng.sparseimage`. You can mount it by typing:
-   ```
+```
 cd $HOME
 hdiutil mount crosstool-ng.sparseimage
-   ```
+```
    And unmount it by typing:
-   ```
+```
 hdiutil unmount /Volumes/crosstool-ng
-   ```
+```
 
 3. You can now build crosstool-ng on that volume by cloning the git repo or
    untaring a release in `/Volumes/crosstool-ng` and bootstrapping (only if from
    git) and configuring and building crosstool-ng.
-   ```
+```
 ./bootstrap # again, only needed if you got the source from git
 ./configure --prefix=/Volumes/crosstool-ng
 make
 make install
-   ```
+```
    Close your terminal app and open it again to get a new shell and verify your
    enviornment variables are set with `env`.
 
