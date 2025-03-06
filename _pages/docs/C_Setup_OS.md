@@ -160,7 +160,7 @@ macOS (a.k.a Mac OS X, OS X)
 ----------------------------
 
 *Originally contributed by: Titus von Boxberg*
-*Updates by: Bryan Hundven*
+*Updates by: Bryan Hundven, RigoLigo*
 
 These instructions have been tested on macOS Sonoma (14.3.1). I have not tested
 on any other version with the following commands. *YMMV*
@@ -175,7 +175,7 @@ problems, please refer to the [homebrew](brew.sh) website.
 1. Install the following packages:
 
    ```
-   autoconf automake bash binutils bison gawk git gnu-sed gnu-tar gettext help2man make ncurses readline wget xz zstd
+   autoconf automake bash binutils bison gawk git gnu-sed gnu-tar gettext help2man libtool make ncurses readline texinfo wget xz zstd
    ```
    
    Then append the following to your shell's profile script (`~/.profile` or
@@ -184,9 +184,10 @@ problems, please refer to the [homebrew](brew.sh) website.
    ```
    BREW_PREFIX="$(brew --prefix)"
    
-   PATH=${PATH}:${BREW_PREFIX}/opt/binutils/bin"
-   PATH=${BREW_PREFIX}/opt/bison/bin:${PATH}"
-   PATH=/Volumes/crosstool-ng/bin:${PATH}"
+   PATH="${PATH}:${BREW_PREFIX}/opt/binutils/bin"
+   PATH="${BREW_PREFIX}/opt/bison/bin:${PATH}"
+   PATH="${BREW_PREFIX}/opt/libtool/libexec/gnubin:${PATH}"
+   PATH="/Volumes/crosstool-ng/bin:${PATH}"
    export PATH
    
    LDFLAGS="-L${BREW_PREFIX}/opt/binutils/lib"
