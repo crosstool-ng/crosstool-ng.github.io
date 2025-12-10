@@ -126,13 +126,6 @@ Or, if your `build.log` file is compressed (most probably!):
 
     bzcat build.log.bz2 | ct-ng extractconfig >.config
 
-The above commands will dump the configuration to `stdout`, so to rebuild a
-toolchain with this configuration, just redirect the output to the `.config`
-file:
-
-    ${CT_TARGET}-ct-ng.config >.config
-    ct-ng oldconfig
-
 Then, you can review and change the configuration by running:
 
     ct-ng menuconfig
