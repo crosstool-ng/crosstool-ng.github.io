@@ -175,7 +175,7 @@ problems, please refer to the [homebrew](brew.sh) website.
 1. Install the following packages:
 
    ```
-   autoconf automake bash binutils bison gawk git gnu-sed gnu-tar gettext help2man libtool make ncurses pkg-config readline texinfo wget xz zstd
+   autoconf automake bash binutils bison gawk git gnu-sed gnu-tar gettext help2man libelf libtool make ncurses pkg-config readline texinfo wget xz zstd
    ```
    
    Then append the following to your shell's profile script (`~/.profile` or
